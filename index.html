@@ -11938,28 +11938,28 @@
       }
     ];
 
-    function getWeatherMult(el, isAttacker) {
-      // Night bonus: dark creatures +20% ATK at night, light creatures -10%
-      if (typeof OW !== 'undefined' && OW._nightBuff) {
-        if (isAttacker && el === 'dark') return 1.20;
-        if (isAttacker && el === 'light') return 0.90;
-      }
-      // Live weather event overrides static plane weather
-      if (typeof OW !== 'undefined' && OW._liveWeatherBoosts) {
-        var lb = OW._liveWeatherBoosts || {};
-        var lp = OW._liveWeatherPenalty || {};
-        if (lb[el] !== undefined) return isAttacker ? lb[el] : 1.0;
-        if (lp[el] !== undefined) return isAttacker ? lp[el] : 1.0;
-      }
-      var plane = (G && G.plane) || 0;
-      var wb = WEATHER_BUFFS[plane];
-      if (!wb) return 1.0;
-      var bm = wb.boostMult || 1.20;
-      var pm = wb.penaltyMult || 0.82;
-      if (wb.boost.indexOf(el) >= 0) return isAttacker ? bm : (2 - bm);
-      if (wb.penalty.indexOf(el) >= 0) return isAttacker ? pm : (2 - pm);
-      return 1.0;
-    }
+    // function getWeatherMult(el, isAttacker) {
+    //   // Night bonus: dark creatures +20% ATK at night, light creatures -10%
+    //   if (typeof OW !== 'undefined' && OW._nightBuff) {
+    //     if (isAttacker && el === 'dark') return 1.20;
+    //     if (isAttacker && el === 'light') return 0.90;
+    //   }
+    //   // Live weather event overrides static plane weather
+    //   if (typeof OW !== 'undefined' && OW._liveWeatherBoosts) {
+    //     var lb = OW._liveWeatherBoosts || {};
+    //     var lp = OW._liveWeatherPenalty || {};
+    //     if (lb[el] !== undefined) return isAttacker ? lb[el] : 1.0;
+    //     if (lp[el] !== undefined) return isAttacker ? lp[el] : 1.0;
+    //   }
+    //   var plane = (G && G.plane) || 0;
+    //   var wb = WEATHER_BUFFS[plane];
+    //   if (!wb) return 1.0;
+    //   var bm = wb.boostMult || 1.20;
+    //   var pm = wb.penaltyMult || 0.82;
+    //   if (wb.boost.indexOf(el) >= 0) return isAttacker ? bm : (2 - bm);
+    //   if (wb.penalty.indexOf(el) >= 0) return isAttacker ? pm : (2 - pm);
+    //   return 1.0;
+    // }
 
     function getWeatherDesc() {
       var plane = (G && G.plane) || 0;
@@ -11990,29 +11990,29 @@
       el.style.transform = 'translateX(-50%) translateY(-28px)';
     }
     // ===== BATTLE LOGIC =====
-    function calcDanger(my, en) {
-      var d = en.level - my.level;
-      // Vantagem de elemento: strong = vantagem (+1), weak = desvantagem (-1)
-      var elAdv = 0;
-      if (EL[my.el] && EL[my.el].strong === en.el) elAdv = +1; // meu elemento forte contra o inimigo
-      if (EL[my.el] && EL[my.el].weak === en.el) elAdv = -1; // meu elemento fraco contra o inimigo
+    // function calcDanger(my, en) {
+    //   var d = en.level - my.level;
+    //   // Vantagem de elemento: strong = vantagem (+1), weak = desvantagem (-1)
+    //   var elAdv = 0;
+    //   if (EL[my.el] && EL[my.el].strong === en.el) elAdv = +1; // meu elemento forte contra o inimigo
+    //   if (EL[my.el] && EL[my.el].weak === en.el) elAdv = -1; // meu elemento fraco contra o inimigo
 
-      // Score combinado: nível + elemento
-      var score = d - elAdv; // score positivo = eu em desvantagem
+    //   // Score combinado: nível + elemento
+    //   var score = d - elAdv; // score positivo = eu em desvantagem
 
-      if (score <= -4) return 'dominant';   // muito acima: nível bem maior + vantagem de elemento
-      if (score <= -2) return 'favorable';  // acima: vantagem de nível ou elemento
-      if (score <= 1) return 'fair';       // equilibrado
-      if (score <= 3) return 'hard';       // desvantagem leve
-      if (score <= 5) return 'brutal';     // desvantagem grave
-      return 'lethal';                       // letal
-    }
+    //   if (score <= -4) return 'dominant';   // muito acima: nível bem maior + vantagem de elemento
+    //   if (score <= -2) return 'favorable';  // acima: vantagem de nível ou elemento
+    //   if (score <= 1) return 'fair';       // equilibrado
+    //   if (score <= 3) return 'hard';       // desvantagem leve
+    //   if (score <= 5) return 'brutal';     // desvantagem grave
+    //   return 'lethal';                       // letal
+    // }
 
-    function eMult(a, b) {
-      if (EL[a].strong === b) return 1.5;
-      if (EL[a].weak === b) return 0.65;
-      return 1.0;
-    }
+    // function eMult(a, b) {
+    //   if (EL[a].strong === b) return 1.5;
+    //   if (EL[a].weak === b) return 0.65;
+    //   return 1.0;
+    // }
 
     function buildHand() {
       HAND.m1 = 3;
@@ -12298,286 +12298,286 @@
       });
     }
 
-    function applyStatusDmg(target, st, targetName) {
-      var dmg = 0;
-      if (st.poison > 0) {
-        var pdmg = st.poison * 2;
-        target.hp = Math.max(0, target.hp - pdmg);
-        addLog(targetName + ' sofreu ' + pdmg + ' de veneno! (' + st.poison + ' stacks)', 'poison-log');
-        st.poison--;
-        dmg += pdmg;
-      }
-      if (st.burn > 0) {
-        var burnDmg = st.burnHeavy ? Math.floor(st.burn * 1.5) : st.burn;
-        target.hp = Math.max(0, target.hp - burnDmg);
-        addLog(targetName + ' queimou por ' + burnDmg + ' de dano!', 'burn-log');
-        st.burn = Math.max(0, st.burn - 1);
-        if (st.burn === 0) st.burnHeavy = false;
-        dmg += burnDmg;
-      }
-      // Tick timed debuffs (blind, weaken, weakenDef, antiheal, reflect)
-      if (st.blind > 0) { st.blind--; if (st.blind === 0) addLog(targetName + ' recuperou a visão.', 'evt'); }
-      if (st.weaken > 0) { st.weaken--; if (st.weaken === 0) addLog(targetName + ' recuperou o ATK.', 'evt'); }
-      if (st.weakenDef > 0) { st.weakenDef--; if (st.weakenDef === 0) addLog(targetName + ' DEF restaurada.', 'evt'); }
-      if (st.antiheal > 0) { st.antiheal--; }
-      if (st.reflect > 0) { st.reflect--; if (st.reflect === 0) addLog(targetName + ' Espinhos antigos cessaram.', 'evt'); }
-      // Apply magnetic damage bonus if set
-      if (st._magDmg > 0) { target.hp = Math.max(0, target.hp - st._magDmg); dmg += st._magDmg; st._magDmg = 0; }
-      return dmg;
-    }
+    // function applyStatusDmg(target, st, targetName) {
+    //   var dmg = 0;
+    //   if (st.poison > 0) {
+    //     var pdmg = st.poison * 2;
+    //     target.hp = Math.max(0, target.hp - pdmg);
+    //     addLog(targetName + ' sofreu ' + pdmg + ' de veneno! (' + st.poison + ' stacks)', 'poison-log');
+    //     st.poison--;
+    //     dmg += pdmg;
+    //   }
+    //   if (st.burn > 0) {
+    //     var burnDmg = st.burnHeavy ? Math.floor(st.burn * 1.5) : st.burn;
+    //     target.hp = Math.max(0, target.hp - burnDmg);
+    //     addLog(targetName + ' queimou por ' + burnDmg + ' de dano!', 'burn-log');
+    //     st.burn = Math.max(0, st.burn - 1);
+    //     if (st.burn === 0) st.burnHeavy = false;
+    //     dmg += burnDmg;
+    //   }
+    //   // Tick timed debuffs (blind, weaken, weakenDef, antiheal, reflect)
+    //   if (st.blind > 0) { st.blind--; if (st.blind === 0) addLog(targetName + ' recuperou a visão.', 'evt'); }
+    //   if (st.weaken > 0) { st.weaken--; if (st.weaken === 0) addLog(targetName + ' recuperou o ATK.', 'evt'); }
+    //   if (st.weakenDef > 0) { st.weakenDef--; if (st.weakenDef === 0) addLog(targetName + ' DEF restaurada.', 'evt'); }
+    //   if (st.antiheal > 0) { st.antiheal--; }
+    //   if (st.reflect > 0) { st.reflect--; if (st.reflect === 0) addLog(targetName + ' Espinhos antigos cessaram.', 'evt'); }
+    //   // Apply magnetic damage bonus if set
+    //   if (st._magDmg > 0) { target.hp = Math.max(0, target.hp - st._magDmg); dmg += st._magDmg; st._magDmg = 0; }
+    //   return dmg;
+    // }
 
-    function applyCardStatus(cardDef, attacker, defender, defSt, attSt) {
-      if (!cardDef.status) return false;
-      switch (cardDef.status) {
-        case 'poison':
-          defSt.poison = Math.min(defSt.poison + 3, 9);
-          addLog(defender.name + ' foi envenenado! (' + defSt.poison + ' stacks)', 'poison-log');
-          break;
-        case 'burn':
-          var bval = Math.max(3, Math.floor(attacker.atk * 0.15));
-          defSt.burn = Math.min(defSt.burn + bval, 30);
-          addLog(defender.name + ' esta em chamas! (' + defSt.burn + ' de burn)', 'burn-log');
-          break;
-        case 'shield':
-          var sval = Math.max(4, Math.floor(attacker.def * 1.2));
-          attSt.shield += sval;
-          addLog(attacker.name + ' criou um escudo de ' + attSt.shield + ' HP!', 'shield-log');
-          return true;
-        case 'paralyze':
-          defSt.paralyze = 2;
-          addLog(defender.name + ' foi paralisado por 2 turnos!', 'para-log');
-          break;
-        // ── HYBRID STATUSES ──
-        case 'burn_heavy':
-          // Ashes: burn with +50% damage (flagged by .burnHeavy)
-          var bhval = Math.max(4, Math.floor(attacker.atk * 0.22));
-          defSt.burn = Math.min(defSt.burn + bhval, 40);
-          defSt.burnHeavy = true;
-          addLog(defender.name + ' está consumido pelas brasas! (' + defSt.burn + ' burn)', 'burn-log');
-          break;
-        case 'antiheal':
-          // Ashes field: -25% heal received
-          defSt.antiheal = 3;
-          addLog(defender.name + ' está no campo de cinzas — cura reduzida!', 'burn-log');
-          break;
-        case 'blind':
-          // Vapor: -30% accuracy (implemented as 30% miss chance)
-          defSt.blind = 2;
-          addLog(defender.name + ' está cego! (-30% precisão por 2t)', 'para-log');
-          break;
-        case 'weaken':
-          // Storm: -35% ATK for 2t
-          defSt.weaken = 2;
-          addLog(defender.name + ' está enfraquecido! (-35% ATK por 2t)', 'para-log');
-          break;
-        case 'weaken_def':
-          // Magnet: -40% DEF for 2t
-          defSt.weakenDef = 2;
-          addLog(defender.name + ' DEF reduzida em 40% por 2t!', 'para-log');
-          break;
-        case 'def_to_dmg':
-          // Magnet ultimate: convert DEF to damage
-          var d2d = Math.floor(defender.def * 0.6);
-          addLog(defender.name + ' campo magnético colapsou! DEF virou ' + d2d + ' de dano extra!', 'burn-log');
-          defSt._magDmg = (defSt._magDmg || 0) + d2d;
-          break;
-        case 'steal_buff':
-          // Twilight: steal 1 buff
-          var stolenBuff = null;
-          if (defSt.shield > 0) { attSt.shield += defSt.shield; stolenBuff = 'Escudo'; defSt.shield = 0; }
-          else if (defSt.poison <= 0 && defSt.weaken <= 0) { attSt.shield += Math.floor(attacker.def * 0.5); stolenBuff = 'Vitalidade'; }
-          if (stolenBuff) addLog(attacker.name + ' roubou ' + stolenBuff + ' do inimigo!', 'drain-log');
-          break;
-        case 'purge':
-          // Twilight ultimate: wipe all enemy buffs
-          defSt.shield = 0; defSt.weaken = 0; defSt.weakenDef = 0;
-          addLog(defender.name + ' teve todos os buffs anulados pelo Eclipse!', 'burn-log');
-          break;
-        case 'reflect':
-          // Ancient: reflect damage flag
-          attSt.reflect = 3;
-          addLog(attacker.name + ' ativou Espinhos Antigos — reflete 40% do dano por 3t!', 'shield-log');
-          return true;
-        case 'heal_shield':
-          // Ancient: heal 25% + create big shield
-          var hsHeal = Math.max(1, Math.floor(attacker.maxHp * 0.25));
-          attacker.hp = Math.min(attacker.maxHp, attacker.hp + hsHeal);
-          var hsShield = Math.max(4, Math.floor(attacker.def * 1.5));
-          attSt.shield += hsShield;
-          addLog(attacker.name + ' Abraço da Floresta: curou ' + hsHeal + ' HP + escudo ' + hsShield + '!', 'drain-log');
-          return true;
-        case 'shield_pierce':
-          // Voidarc: flag next hit to pierce shield (handled in calcDmgWithShield)
-          attSt.piercingNext = true;
-          addLog(attacker.name + ' [Lança do Vazio] próximo golpe perfura escudos!', 'evt');
-          break;
-        case 'multi_dot':
-          // Voidarc: paralyze + poison together
-          defSt.paralyze = 1;
-          defSt.poison = Math.min(defSt.poison + 3, 9);
-          addLog(defender.name + ' paralisado E envenenado pela Corrente Negra!', 'para-log');
-          break;
-        case 'true_dmg':
-          // Voidarc ultimate: guaranteed crit, ignore defense — flagged externally
-          addLog(attacker.name + ' [Pulsar] dano verdadeiro ativado!', 'burn-log');
-          break;
-        case 'cleanse_heal':
-          // Aurora: heal 30% + remove 1 negative status
-          var cHeal = Math.max(1, Math.floor(attacker.maxHp * 0.30));
-          attacker.hp = Math.min(attacker.maxHp, attacker.hp + cHeal);
-          // Remove worst negative status
-          var aSt = attacker === ac() ? G.battle.mySt : G.battle.enSt;
-          if (aSt.poison > 0) { aSt.poison = 0; addLog(attacker.name + ' curou veneno!', 'drain-log'); }
-          else if (aSt.burn > 0) { aSt.burn = 0; addLog(attacker.name + ' apagou queimadura!', 'drain-log'); }
-          else if (aSt.paralyze > 0) { aSt.paralyze = 0; addLog(attacker.name + ' curou paralisia!', 'drain-log'); }
-          addLog(attacker.name + ' Aurora curou ' + cHeal + ' HP!', 'drain-log');
-          return true;
-      }
-      return false;
-    }
+    // function applyCardStatus(cardDef, attacker, defender, defSt, attSt) {
+    //   if (!cardDef.status) return false;
+    //   switch (cardDef.status) {
+    //     case 'poison':
+    //       defSt.poison = Math.min(defSt.poison + 3, 9);
+    //       addLog(defender.name + ' foi envenenado! (' + defSt.poison + ' stacks)', 'poison-log');
+    //       break;
+    //     case 'burn':
+    //       var bval = Math.max(3, Math.floor(attacker.atk * 0.15));
+    //       defSt.burn = Math.min(defSt.burn + bval, 30);
+    //       addLog(defender.name + ' esta em chamas! (' + defSt.burn + ' de burn)', 'burn-log');
+    //       break;
+    //     case 'shield':
+    //       var sval = Math.max(4, Math.floor(attacker.def * 1.2));
+    //       attSt.shield += sval;
+    //       addLog(attacker.name + ' criou um escudo de ' + attSt.shield + ' HP!', 'shield-log');
+    //       return true;
+    //     case 'paralyze':
+    //       defSt.paralyze = 2;
+    //       addLog(defender.name + ' foi paralisado por 2 turnos!', 'para-log');
+    //       break;
+    //     // ── HYBRID STATUSES ──
+    //     case 'burn_heavy':
+    //       // Ashes: burn with +50% damage (flagged by .burnHeavy)
+    //       var bhval = Math.max(4, Math.floor(attacker.atk * 0.22));
+    //       defSt.burn = Math.min(defSt.burn + bhval, 40);
+    //       defSt.burnHeavy = true;
+    //       addLog(defender.name + ' está consumido pelas brasas! (' + defSt.burn + ' burn)', 'burn-log');
+    //       break;
+    //     case 'antiheal':
+    //       // Ashes field: -25% heal received
+    //       defSt.antiheal = 3;
+    //       addLog(defender.name + ' está no campo de cinzas — cura reduzida!', 'burn-log');
+    //       break;
+    //     case 'blind':
+    //       // Vapor: -30% accuracy (implemented as 30% miss chance)
+    //       defSt.blind = 2;
+    //       addLog(defender.name + ' está cego! (-30% precisão por 2t)', 'para-log');
+    //       break;
+    //     case 'weaken':
+    //       // Storm: -35% ATK for 2t
+    //       defSt.weaken = 2;
+    //       addLog(defender.name + ' está enfraquecido! (-35% ATK por 2t)', 'para-log');
+    //       break;
+    //     case 'weaken_def':
+    //       // Magnet: -40% DEF for 2t
+    //       defSt.weakenDef = 2;
+    //       addLog(defender.name + ' DEF reduzida em 40% por 2t!', 'para-log');
+    //       break;
+    //     case 'def_to_dmg':
+    //       // Magnet ultimate: convert DEF to damage
+    //       var d2d = Math.floor(defender.def * 0.6);
+    //       addLog(defender.name + ' campo magnético colapsou! DEF virou ' + d2d + ' de dano extra!', 'burn-log');
+    //       defSt._magDmg = (defSt._magDmg || 0) + d2d;
+    //       break;
+    //     case 'steal_buff':
+    //       // Twilight: steal 1 buff
+    //       var stolenBuff = null;
+    //       if (defSt.shield > 0) { attSt.shield += defSt.shield; stolenBuff = 'Escudo'; defSt.shield = 0; }
+    //       else if (defSt.poison <= 0 && defSt.weaken <= 0) { attSt.shield += Math.floor(attacker.def * 0.5); stolenBuff = 'Vitalidade'; }
+    //       if (stolenBuff) addLog(attacker.name + ' roubou ' + stolenBuff + ' do inimigo!', 'drain-log');
+    //       break;
+    //     case 'purge':
+    //       // Twilight ultimate: wipe all enemy buffs
+    //       defSt.shield = 0; defSt.weaken = 0; defSt.weakenDef = 0;
+    //       addLog(defender.name + ' teve todos os buffs anulados pelo Eclipse!', 'burn-log');
+    //       break;
+    //     case 'reflect':
+    //       // Ancient: reflect damage flag
+    //       attSt.reflect = 3;
+    //       addLog(attacker.name + ' ativou Espinhos Antigos — reflete 40% do dano por 3t!', 'shield-log');
+    //       return true;
+    //     case 'heal_shield':
+    //       // Ancient: heal 25% + create big shield
+    //       var hsHeal = Math.max(1, Math.floor(attacker.maxHp * 0.25));
+    //       attacker.hp = Math.min(attacker.maxHp, attacker.hp + hsHeal);
+    //       var hsShield = Math.max(4, Math.floor(attacker.def * 1.5));
+    //       attSt.shield += hsShield;
+    //       addLog(attacker.name + ' Abraço da Floresta: curou ' + hsHeal + ' HP + escudo ' + hsShield + '!', 'drain-log');
+    //       return true;
+    //     case 'shield_pierce':
+    //       // Voidarc: flag next hit to pierce shield (handled in calcDmgWithShield)
+    //       attSt.piercingNext = true;
+    //       addLog(attacker.name + ' [Lança do Vazio] próximo golpe perfura escudos!', 'evt');
+    //       break;
+    //     case 'multi_dot':
+    //       // Voidarc: paralyze + poison together
+    //       defSt.paralyze = 1;
+    //       defSt.poison = Math.min(defSt.poison + 3, 9);
+    //       addLog(defender.name + ' paralisado E envenenado pela Corrente Negra!', 'para-log');
+    //       break;
+    //     case 'true_dmg':
+    //       // Voidarc ultimate: guaranteed crit, ignore defense — flagged externally
+    //       addLog(attacker.name + ' [Pulsar] dano verdadeiro ativado!', 'burn-log');
+    //       break;
+    //     case 'cleanse_heal':
+    //       // Aurora: heal 30% + remove 1 negative status
+    //       var cHeal = Math.max(1, Math.floor(attacker.maxHp * 0.30));
+    //       attacker.hp = Math.min(attacker.maxHp, attacker.hp + cHeal);
+    //       // Remove worst negative status
+    //       var aSt = attacker === ac() ? G.battle.mySt : G.battle.enSt;
+    //       if (aSt.poison > 0) { aSt.poison = 0; addLog(attacker.name + ' curou veneno!', 'drain-log'); }
+    //       else if (aSt.burn > 0) { aSt.burn = 0; addLog(attacker.name + ' apagou queimadura!', 'drain-log'); }
+    //       else if (aSt.paralyze > 0) { aSt.paralyze = 0; addLog(attacker.name + ' curou paralisia!', 'drain-log'); }
+    //       addLog(attacker.name + ' Aurora curou ' + cHeal + ' HP!', 'drain-log');
+    //       return true;
+    //   }
+    //   return false;
+    // }
 
-    function calcDmgWithShield(rawDmg, defenderSt, attackerSt) {
-      // Shield pierce: bypass shield entirely
-      if (attackerSt && attackerSt.piercingNext) {
-        attackerSt.piercingNext = false;
-        addLog('[Perfuração] ignorou o escudo!', 'evt');
-        return rawDmg;
-      }
-      if (defenderSt.shield > 0) {
-        if (defenderSt.shield >= rawDmg) {
-          defenderSt.shield -= rawDmg;
-          return 0;
-        } else {
-          var rem = rawDmg - defenderSt.shield;
-          defenderSt.shield = 0;
-          addLog('Escudo absorveu parte do dano!', 'shield-log');
-          return rem;
-        }
-      }
-      return rawDmg;
-    }
+    // function calcDmgWithShield(rawDmg, defenderSt, attackerSt) {
+    //   // Shield pierce: bypass shield entirely
+    //   if (attackerSt && attackerSt.piercingNext) {
+    //     attackerSt.piercingNext = false;
+    //     addLog('[Perfuração] ignorou o escudo!', 'evt');
+    //     return rawDmg;
+    //   }
+    //   if (defenderSt.shield > 0) {
+    //     if (defenderSt.shield >= rawDmg) {
+    //       defenderSt.shield -= rawDmg;
+    //       return 0;
+    //     } else {
+    //       var rem = rawDmg - defenderSt.shield;
+    //       defenderSt.shield = 0;
+    //       addLog('Escudo absorveu parte do dano!', 'shield-log');
+    //       return rem;
+    //     }
+    //   }
+    //   return rawDmg;
+    // }
 
     // ===== PASSIVE ABILITIES =====
-    function getActivePassives(creature) {
-      var result = [];
-      // 1. TPLS passives (base/evolved creatures)
-      var tpl = TPLS.find(function (t) { return t.name === creature.name || t.name === creature.tplName; });
-      if (tpl && tpl.passives) {
-        tpl.passives.filter(function (p) { return creature.level >= p.lvl; })
-          .forEach(function (p) { result.push(p); });
-      }
-      // 2. Inherited passives from fusion parents (_passives array)
-      if (creature._passives && creature._passives.length) {
-        creature._passives.forEach(function (p) {
-          if (!result.some(function (r) { return r.id === p.id; })) result.push(p);
-        });
-      }
-      // 3. Hybrid element passives (from HYBRID_PASSIVES)
-      if (EL[creature.el] && EL[creature.el].hybrid && typeof HYBRID_PASSIVES !== 'undefined') {
-        var hp = HYBRID_PASSIVES[creature.el];
-        if (hp) hp.filter(function (p) { return creature.level >= p.lvl; })
-          .forEach(function (p) {
-            if (!result.some(function (r) { return r.id === p.id; })) result.push(p);
-          });
-      }
-      return result;
-    }
+    // function getActivePassives(creature) {
+    //   var result = [];
+    //   // 1. TPLS passives (base/evolved creatures)
+    //   var tpl = TPLS.find(function (t) { return t.name === creature.name || t.name === creature.tplName; });
+    //   if (tpl && tpl.passives) {
+    //     tpl.passives.filter(function (p) { return creature.level >= p.lvl; })
+    //       .forEach(function (p) { result.push(p); });
+    //   }
+    //   // 2. Inherited passives from fusion parents (_passives array)
+    //   if (creature._passives && creature._passives.length) {
+    //     creature._passives.forEach(function (p) {
+    //       if (!result.some(function (r) { return r.id === p.id; })) result.push(p);
+    //     });
+    //   }
+    //   // 3. Hybrid element passives (from HYBRID_PASSIVES)
+    //   if (EL[creature.el] && EL[creature.el].hybrid && typeof HYBRID_PASSIVES !== 'undefined') {
+    //     var hp = HYBRID_PASSIVES[creature.el];
+    //     if (hp) hp.filter(function (p) { return creature.level >= p.lvl; })
+    //       .forEach(function (p) {
+    //         if (!result.some(function (r) { return r.id === p.id; })) result.push(p);
+    //       });
+    //   }
+    //   return result;
+    // }
 
-    function hasPassive(creature, id) {
-      return getActivePassives(creature).some(function (p) { return p.id === id; });
-    }
+    // function hasPassive(creature, id) {
+    //   return getActivePassives(creature).some(function (p) { return p.id === id; });
+    // }
 
-    function applyPassivesOnDamageDealt(attacker, target, dmg) {
-      // lifesteal: heal 15% of damage dealt
-      if (hasPassive(attacker, 'lifesteal')) {
-        var heal = Math.max(1, Math.floor(dmg * 0.15));
-        attacker.hp = Math.min(attacker.maxHp, attacker.hp + heal);
-        floatDmg('my', heal, true);
-        addLog(attacker.name + ' [Passiva] drenou ' + heal + ' HP!', 'drain-log');
-      }
-      // aurora_mend: heal 8% of damage as HP
-      if (hasPassive(attacker, 'aurora_mend')) {
-        var aHeal = Math.max(1, Math.floor(dmg * 0.08));
-        attacker.hp = Math.min(attacker.maxHp, attacker.hp + aHeal);
-        floatDmg(attacker === ac() ? 'my' : 'en', aHeal, true);
-      }
-      // voidarc_pierce: log pierce effect (already applied in dmg calc)
-      // vapor_blind: 15% chance to apply blind status
-      if (hasPassive(attacker, 'vapor_blind') && Math.random() < 0.15) {
-        if (target === G.battle.enemy) { G.battle.enSt.blind = (G.battle.enSt.blind || 0) + 1; }
-        else { G.battle.mySt.blind = (G.battle.mySt.blind || 0) + 1; }
-        addLog(attacker.name + ' [Névoa] cegou o inimigo!', 'evt');
-      }
-      return dmg;
-    }
+    // function applyPassivesOnDamageDealt(attacker, target, dmg) {
+    //   // lifesteal: heal 15% of damage dealt
+    //   if (hasPassive(attacker, 'lifesteal')) {
+    //     var heal = Math.max(1, Math.floor(dmg * 0.15));
+    //     attacker.hp = Math.min(attacker.maxHp, attacker.hp + heal);
+    //     floatDmg('my', heal, true);
+    //     addLog(attacker.name + ' [Passiva] drenou ' + heal + ' HP!', 'drain-log');
+    //   }
+    //   // aurora_mend: heal 8% of damage as HP
+    //   if (hasPassive(attacker, 'aurora_mend')) {
+    //     var aHeal = Math.max(1, Math.floor(dmg * 0.08));
+    //     attacker.hp = Math.min(attacker.maxHp, attacker.hp + aHeal);
+    //     floatDmg(attacker === ac() ? 'my' : 'en', aHeal, true);
+    //   }
+    //   // voidarc_pierce: log pierce effect (already applied in dmg calc)
+    //   // vapor_blind: 15% chance to apply blind status
+    //   if (hasPassive(attacker, 'vapor_blind') && Math.random() < 0.15) {
+    //     if (target === G.battle.enemy) { G.battle.enSt.blind = (G.battle.enSt.blind || 0) + 1; }
+    //     else { G.battle.mySt.blind = (G.battle.mySt.blind || 0) + 1; }
+    //     addLog(attacker.name + ' [Névoa] cegou o inimigo!', 'evt');
+    //   }
+    //   return dmg;
+    // }
 
-    function applyPassivesOnDamageReceived(defender, dmg) {
-      // thorns: reflect 20% back
-      if (hasPassive(defender, 'thorns')) {
-        var reflect = Math.max(1, Math.floor(dmg * 0.20));
-        addLog(defender.name + ' [Passiva] refletiu ' + reflect + ' de dano!', 'evt');
-        return reflect;
-      }
-      // ancient_ward: cap incoming damage at 25% maxHp per hit
-      if (hasPassive(defender, 'ancient_ward')) {
-        var cap = Math.floor(defender.maxHp * 0.25);
-        if (dmg > cap) addLog(defender.name + ' [Guardião] absorbeu dano excessivo!', 'evt');
-        // Note: cap is applied by caller checking return
-      }
-      return 0;
-    }
+    // function applyPassivesOnDamageReceived(defender, dmg) {
+    //   // thorns: reflect 20% back
+    //   if (hasPassive(defender, 'thorns')) {
+    //     var reflect = Math.max(1, Math.floor(dmg * 0.20));
+    //     addLog(defender.name + ' [Passiva] refletiu ' + reflect + ' de dano!', 'evt');
+    //     return reflect;
+    //   }
+    //   // ancient_ward: cap incoming damage at 25% maxHp per hit
+    //   if (hasPassive(defender, 'ancient_ward')) {
+    //     var cap = Math.floor(defender.maxHp * 0.25);
+    //     if (dmg > cap) addLog(defender.name + ' [Guardião] absorbeu dano excessivo!', 'evt');
+    //     // Note: cap is applied by caller checking return
+    //   }
+    //   return 0;
+    // }
 
-    function capDamageForAncientWard(defender, dmg) {
-      if (hasPassive(defender, 'ancient_ward')) {
-        var cap = Math.floor(defender.maxHp * 0.25);
-        return Math.min(dmg, cap);
-      }
-      return dmg;
-    }
+    // function capDamageForAncientWard(defender, dmg) {
+    //   if (hasPassive(defender, 'ancient_ward')) {
+    //     var cap = Math.floor(defender.maxHp * 0.25);
+    //     return Math.min(dmg, cap);
+    //   }
+    //   return dmg;
+    // }
 
-    function applyPassivesEndOfTurn(creature) {
-      // regen_turn: recover 5% maxHp
-      if (hasPassive(creature, 'regen_turn')) {
-        var regen = Math.max(1, Math.floor(creature.maxHp * 0.05));
-        creature.hp = Math.min(creature.maxHp, creature.hp + regen);
-        addLog(creature.name + ' [Passiva] regenerou ' + regen + ' HP!', 'drain-log');
-      }
-      // ancient_roots: regenera 8% HP
-      if (hasPassive(creature, 'ancient_roots')) {
-        var regen2 = Math.max(1, Math.floor(creature.maxHp * 0.08));
-        creature.hp = Math.min(creature.maxHp, creature.hp + regen2);
-        addLog(creature.name + ' [Raízes] regenerou ' + regen2 + ' HP!', 'drain-log');
-      }
-      // storm_surge: accumulate ATK bonus each turn without damage
-      if (hasPassive(creature, 'storm_surge')) {
-        if (!creature._surgeStacks) creature._surgeStacks = 0;
-        if (creature._lastHpEot === creature.hp && creature._surgeStacks < 3) {
-          creature._surgeStacks++;
-          addLog(creature.name + ' [Maré Crescente] ATK +8%! (' + creature._surgeStacks + '/3)', 'evt');
-        }
-        creature._lastHpEot = creature.hp;
-      }
-      // shield_turn: gain shield = DEF*0.4
-      if (hasPassive(creature, 'shield_turn')) {
-        var shield = Math.max(1, Math.floor(creature.def * 0.4));
-        if (creature === ac()) {
-          G.battle.mySt.shield = (G.battle.mySt.shield || 0) + shield;
-          addLog(creature.name + ' [Passiva] ganhou escudo +' + shield + '!', 'evt');
-        } else {
-          G.battle.enSt.shield = (G.battle.enSt.shield || 0) + shield;
-        }
-      }
-    }
+    // function applyPassivesEndOfTurn(creature) {
+    //   // regen_turn: recover 5% maxHp
+    //   if (hasPassive(creature, 'regen_turn')) {
+    //     var regen = Math.max(1, Math.floor(creature.maxHp * 0.05));
+    //     creature.hp = Math.min(creature.maxHp, creature.hp + regen);
+    //     addLog(creature.name + ' [Passiva] regenerou ' + regen + ' HP!', 'drain-log');
+    //   }
+    //   // ancient_roots: regenera 8% HP
+    //   if (hasPassive(creature, 'ancient_roots')) {
+    //     var regen2 = Math.max(1, Math.floor(creature.maxHp * 0.08));
+    //     creature.hp = Math.min(creature.maxHp, creature.hp + regen2);
+    //     addLog(creature.name + ' [Raízes] regenerou ' + regen2 + ' HP!', 'drain-log');
+    //   }
+    //   // storm_surge: accumulate ATK bonus each turn without damage
+    //   if (hasPassive(creature, 'storm_surge')) {
+    //     if (!creature._surgeStacks) creature._surgeStacks = 0;
+    //     if (creature._lastHpEot === creature.hp && creature._surgeStacks < 3) {
+    //       creature._surgeStacks++;
+    //       addLog(creature.name + ' [Maré Crescente] ATK +8%! (' + creature._surgeStacks + '/3)', 'evt');
+    //     }
+    //     creature._lastHpEot = creature.hp;
+    //   }
+    //   // shield_turn: gain shield = DEF*0.4
+    //   if (hasPassive(creature, 'shield_turn')) {
+    //     var shield = Math.max(1, Math.floor(creature.def * 0.4));
+    //     if (creature === ac()) {
+    //       G.battle.mySt.shield = (G.battle.mySt.shield || 0) + shield;
+    //       addLog(creature.name + ' [Passiva] ganhou escudo +' + shield + '!', 'evt');
+    //     } else {
+    //       G.battle.enSt.shield = (G.battle.enSt.shield || 0) + shield;
+    //     }
+    //   }
+    // }
 
-    function getPassiveCritBonus(creature) {
-      return hasPassive(creature, 'crit_boost') ? 0.20 : 0;
-    }
+    // function getPassiveCritBonus(creature) {
+    //   return hasPassive(creature, 'crit_boost') ? 0.20 : 0;
+    // }
 
-    function getPassiveElResist(creature, attackerEl) {
-      // el_resist reduces fire damage by 25%
-      if (hasPassive(creature, 'el_resist') && attackerEl === 'fire') return 0.75;
-      return 1.0;
-    }
+    // function getPassiveElResist(creature, attackerEl) {
+    //   // el_resist reduces fire damage by 25%
+    //   if (hasPassive(creature, 'el_resist') && attackerEl === 'fire') return 0.75;
+    //   return 1.0;
+    // }
 
     function renderPassivePips() {
       var my = ac();
@@ -23367,6 +23367,7 @@
   <script src="./src/state.js"></script>
   <script src="./data-loader.js"></script>
   <script src="./src/creatures.js"></script>
+  <script src="./src/battle.js"></script>
   <!-- DATA LOADER -->
   <script src="./data-loader.js"></script>
 
