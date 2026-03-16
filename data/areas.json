@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Planicie Cinzenta",
+    "minL": 1, "maxL": 4,
+    "danger": "low",
+    "elems": ["fire", "earth", "water", "nature"],
+    "unlocked": true,
+    "winsNeeded": 0,
+    "unlocksIdx": [1, 4],
+    "icon": "⚔",
+    "boss": {
+      "name": "Golem Primordial",
+      "el": "earth", "atk": 18, "def": 22, "lvl": 6,
+      "intro": ["O chão treme...", "Uma forma colossal emerge das pedras.", "O GOLEM PRIMORDIAL desperta."],
+      "reward": "earth", "souls": 200
+    }
+  },
+  {
+    "name": "Floresta Sombria",
+    "minL": 3, "maxL": 8,
+    "danger": "mid",
+    "elems": ["nature", "earth", "dark", "water"],
+    "unlocked": false,
+    "winsNeeded": 3,
+    "unlocksIdx": [2],
+    "icon": "🌿",
+    "unlockedBy": 0,
+    "boss": {
+      "name": "Driade Corrompida",
+      "el": "dark", "atk": 22, "def": 16, "lvl": 11,
+      "intro": ["As árvores param de sussurrar.", "Sombras se condensam numa forma retorcida.", "A DRIADE CORROMPIDA avança."],
+      "reward": "nature", "souls": 350
+    }
+  },
+  {
+    "name": "Ruinas Ardentes",
+    "minL": 6, "maxL": 14,
+    "danger": "high",
+    "elems": ["fire", "light", "dark", "electric"],
+    "unlocked": false,
+    "winsNeeded": 5,
+    "unlocksIdx": [3],
+    "icon": "🔥",
+    "unlockedBy": 1,
+    "boss": {
+      "name": "Ignar Ancestral",
+      "el": "fire", "atk": 30, "def": 20, "lvl": 17,
+      "intro": ["As ruínas começam a derreter.", "Um rugido ancestral ecoa pelos corredores.", "O IGNAR ANCESTRAL acorda da pedra."],
+      "reward": "fire", "souls": 600
+    }
+  },
+  {
+    "name": "Abismo Eterno",
+    "minL": 12, "maxL": 25,
+    "danger": "extreme",
+    "elems": ["dark", "light", "electric"],
+    "unlocked": false,
+    "winsNeeded": 8,
+    "unlocksIdx": [],
+    "icon": "💀",
+    "unlockedBy": 2,
+    "boss": {
+      "name": "O Vazio",
+      "el": "dark", "atk": 40, "def": 30, "lvl": 28,
+      "intro": ["O abismo observa de volta.", "A realidade racha ao seu redor.", "O VAZIO toma forma."],
+      "reward": "dark", "souls": 1200
+    }
+  },
+  {
+    "name": "Pantano Nebuloso",
+    "minL": 2, "maxL": 6,
+    "danger": "low",
+    "elems": ["water", "nature", "earth", "dark"],
+    "unlocked": true,
+    "winsNeeded": 0,
+    "unlocksIdx": [5],
+    "icon": "🌊",
+    "boss": {
+      "name": "Levian do Lodo",
+      "el": "water", "atk": 20, "def": 18, "lvl": 9,
+      "intro": ["A névoa engrossa de repente.", "Algo imenso se move nas profundezas do pântano.", "O LEVIATÃ DO LODO emerge."],
+      "reward": "water", "souls": 300
+    }
+  },
+  {
+    "name": "Pico dos Trovoes",
+    "minL": 8, "maxL": 18,
+    "danger": "high",
+    "elems": ["electric", "fire", "light", "water"],
+    "unlocked": false,
+    "winsNeeded": 5,
+    "unlocksIdx": [],
+    "icon": "⚡",
+    "unlockedBy": 4,
+    "boss": {
+      "name": "Tempestade Eterna",
+      "el": "electric", "atk": 35, "def": 22, "lvl": 22,
+      "intro": ["Os raios se intensificam sem parar.", "Uma figura de pura eletricidade desce das nuvens.", "A TEMPESTADE ETERNA toma forma."],
+      "reward": "electric", "souls": 800
+    }
+  }
+]

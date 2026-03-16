@@ -9389,9 +9389,15 @@
 
     // Init — restore session on page load
     document.addEventListener('DOMContentLoaded', function () {
-      sbRestoreSession().then(function (u) {
-        SB.ready = true;
-        renderAuthUI();
+      loadGameData().then(function (ok) {
+        if (!ok) {
+          alert('Erro ao carregar dados do jogo. Verifique o console.');
+          return;
+        }
+        sbRestoreSession().then(function (u) {
+          SB.ready = true;
+          renderAuthUI();
+        });
       });
     });
   </script>
@@ -23349,6 +23355,10 @@
     <div style="font-family:'Cinzel Decorative',serif;font-size:1.8rem;color:rgba(201,147,58,.6);letter-spacing:.3em">✦
     </div>
   </div>
+
+  <!-- DATA LOADER -->
+  <script src="./data-loader.js"></script>
+
 
 </body>
 
