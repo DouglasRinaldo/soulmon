@@ -1,0 +1,220 @@
+[
+  {
+    "name": "Ignar", "el": "fire", "body": "lizard", "atk": 12, "def": 8, "shape": "spiky",
+    "passives": [
+      { "lvl": 5, "id": "crit_boost", "name": "Furia Ardente", "desc": "+20% chance de critico" },
+      { "lvl": 12, "id": "lifesteal", "name": "Chama Voraz", "desc": "Rouba 15% do dano causado como HP" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Chama Aprimorada" }, { "lvl": 15, "card": "u", "name": "Purgação Final" }]
+  },
+  {
+    "name": "Torren", "el": "earth", "body": "golem", "atk": 9, "def": 14, "shape": "round",
+    "passives": [
+      { "lvl": 5, "id": "thorns", "name": "Pele de Pedra", "desc": "Reflete 20% do dano recebido" },
+      { "lvl": 12, "id": "regen_turn", "name": "Raizes Profundas", "desc": "Recupera 5% HP ao fim de cada turno" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Escudo de Pedra" }, { "lvl": 15, "card": "u", "name": "Terremoto" }]
+  },
+  {
+    "name": "Aquilis", "el": "water", "body": "serpent", "atk": 11, "def": 10, "shape": "fluid",
+    "passives": [
+      { "lvl": 5, "id": "regen_turn", "name": "Fluir Eterno", "desc": "Recupera 5% HP ao fim de cada turno" },
+      { "lvl": 12, "id": "el_resist", "name": "Escamas Gélidas", "desc": "Reduz dano de fogo em 25%" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Maré Glacial" }, { "lvl": 15, "card": "u", "name": "Dilúvio" }]
+  },
+  {
+    "name": "Umbrath", "el": "dark", "body": "phantom", "atk": 14, "def": 7, "shape": "crystal",
+    "passives": [
+      { "lvl": 5, "id": "lifesteal", "name": "Drenagem Sombria", "desc": "Rouba 15% do dano causado como HP" },
+      { "lvl": 12, "id": "crit_boost", "name": "Olhar do Vazio", "desc": "+20% chance de critico" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Dreno Sombrio" }, { "lvl": 15, "card": "u", "name": "Vazio Absoluto" }]
+  },
+  {
+    "name": "Solael", "el": "light", "body": "angel", "atk": 13, "def": 9, "shape": "star",
+    "passives": [
+      { "lvl": 5, "id": "shield_turn", "name": "Aura Divina", "desc": "Ganha escudo de DEF*0.4 por turno" },
+      { "lvl": 12, "id": "lifesteal", "name": "Benção Solar", "desc": "Rouba 15% do dano causado como HP" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Bênção Radiante" }, { "lvl": 15, "card": "u", "name": "Ascensão Divina" }]
+  },
+  {
+    "name": "Ferox", "el": "fire", "body": "lizard", "atk": 10, "def": 12, "shape": "spiky",
+    "passives": [
+      { "lvl": 5, "id": "thorns", "name": "Escamas de Brasa", "desc": "Reflete 20% do dano recebido" },
+      { "lvl": 12, "id": "crit_boost", "name": "Instinto Bruto", "desc": "+20% chance de critico" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Chama Aprimorada" }, { "lvl": 15, "card": "u", "name": "Purgação Final" }]
+  },
+  {
+    "name": "Vexaris", "el": "dark", "body": "phantom", "atk": 16, "def": 6, "shape": "crystal",
+    "passives": [
+      { "lvl": 5, "id": "crit_boost", "name": "Lâmina Negra", "desc": "+20% chance de critico" },
+      { "lvl": 12, "id": "lifesteal", "name": "Pulsar Maldito", "desc": "Rouba 15% do dano causado como HP" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Dreno Sombrio" }, { "lvl": 15, "card": "u", "name": "Vazio Absoluto" }]
+  },
+  {
+    "name": "Crestus", "el": "water", "body": "serpent", "atk": 8, "def": 15, "shape": "fluid",
+    "passives": [
+      { "lvl": 5, "id": "el_resist", "name": "Carapaça Molhada", "desc": "Reduz dano de fogo em 25%" },
+      { "lvl": 12, "id": "thorns", "name": "Recife Vivo", "desc": "Reflete 20% do dano recebido" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Maré Glacial" }, { "lvl": 15, "card": "u", "name": "Dilúvio" }]
+  },
+  {
+    "name": "Pyrax", "el": "fire", "body": "lizard", "atk": 15, "def": 7, "shape": "spiky",
+    "passives": [
+      { "lvl": 5, "id": "lifesteal", "name": "Fogo Interior", "desc": "Rouba 15% do dano causado como HP" },
+      { "lvl": 12, "id": "crit_boost", "name": "Explosão Final", "desc": "+20% chance de critico" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Chama Aprimorada" }, { "lvl": 15, "card": "u", "name": "Purgação Final" }]
+  },
+  {
+    "name": "Gloamtide", "el": "dark", "body": "phantom", "atk": 13, "def": 11, "shape": "crystal",
+    "passives": [
+      { "lvl": 5, "id": "regen_turn", "name": "Marés das Sombras", "desc": "Recupera 5% HP ao fim de cada turno" },
+      { "lvl": 12, "id": "thorns", "name": "Forma Amorfa", "desc": "Reflete 20% do dano recebido" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Dreno Sombrio" }, { "lvl": 15, "card": "u", "name": "Vazio Absoluto" }]
+  },
+  {
+    "name": "Lumivex", "el": "light", "body": "angel", "atk": 11, "def": 11, "shape": "star",
+    "passives": [
+      { "lvl": 5, "id": "shield_turn", "name": "Véu de Luz", "desc": "Ganha escudo de DEF*0.4 por turno" },
+      { "lvl": 12, "id": "regen_turn", "name": "Cura Radiante", "desc": "Recupera 5% HP ao fim de cada turno" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Bênção Radiante" }, { "lvl": 15, "card": "u", "name": "Ascensão Divina" }]
+  },
+  {
+    "name": "Mosskar", "el": "earth", "body": "golem", "atk": 10, "def": 13, "shape": "round",
+    "passives": [
+      { "lvl": 5, "id": "thorns", "name": "Espinhos de Lama", "desc": "Reflete 20% do dano recebido" },
+      { "lvl": 12, "id": "regen_turn", "name": "Musgo Curativo", "desc": "Recupera 5% HP ao fim de cada turno" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Escudo de Pedra" }, { "lvl": 15, "card": "u", "name": "Terremoto" }]
+  },
+  {
+    "name": "Venari", "el": "nature", "body": "treant", "atk": 12, "def": 11, "shape": "fluid",
+    "passives": [
+      { "lvl": 5, "id": "lifesteal", "name": "Seiva Vital", "desc": "Rouba 15% do dano causado como HP" },
+      { "lvl": 12, "id": "regen_turn", "name": "Florescimento", "desc": "Recupera 5% HP ao fim de cada turno" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Espinhos Vivos" }, { "lvl": 15, "card": "u", "name": "Florescimento Total" }]
+  },
+  {
+    "name": "Leafur", "el": "nature", "body": "treant", "atk": 9, "def": 13, "shape": "round",
+    "passives": [
+      { "lvl": 5, "id": "el_resist", "name": "Casca Grossa", "desc": "Reduz dano de fogo em 25%" },
+      { "lvl": 12, "id": "shield_turn", "name": "Folhagem Densa", "desc": "Ganha escudo de DEF*0.4 por turno" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Espinhos Vivos" }, { "lvl": 15, "card": "u", "name": "Florescimento Total" }]
+  },
+  {
+    "name": "Sparky", "el": "electric", "body": "fox", "atk": 14, "def": 6, "shape": "spiky",
+    "passives": [
+      { "lvl": 5, "id": "crit_boost", "name": "Descarga Rápida", "desc": "+20% chance de critico" },
+      { "lvl": 12, "id": "thorns", "name": "Campo Eletrico", "desc": "Reflete 20% do dano recebido" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Descarga Dupla" }, { "lvl": 15, "card": "u", "name": "Tempestade Elétrica" }]
+  },
+  {
+    "name": "Voltix", "el": "electric", "body": "fox", "atk": 11, "def": 8, "shape": "star",
+    "passives": [
+      { "lvl": 5, "id": "shield_turn", "name": "Armadura de Ions", "desc": "Ganha escudo de DEF*0.4 por turno" },
+      { "lvl": 12, "id": "crit_boost", "name": "Sobrecarga", "desc": "+20% chance de critico" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Descarga Dupla" }, { "lvl": 15, "card": "u", "name": "Tempestade Elétrica" }]
+  },
+  {
+    "name": "Embrasado", "el": "fire", "body": "beast", "atk": 17, "def": 11, "shape": "spiky",
+    "tier": "bestial", "color": 16728064, "desc": "Um predador de chamas primitivo. Seus rugidos derretem pedras.",
+    "passives": [
+      { "lvl": 5, "id": "savage_strike", "name": "Golpe Selvagem", "desc": "Ataques têm 30% de chance de causar sangramento (+5 dano/turno)" },
+      { "lvl": 12, "id": "feral_rage", "name": "Fúria Feral", "desc": "Abaixo de 30% HP, ATQ aumenta 50%" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Rugido Ardente" }, { "lvl": 15, "card": "u", "name": "Chama Primordial" }]
+  },
+  {
+    "name": "Gorakal", "el": "earth", "body": "beast", "atk": 14, "def": 16, "shape": "round",
+    "tier": "bestial", "color": 5590319, "desc": "Colosso de rocha viva. Cada passo seu abre rachaduras no chão.",
+    "passives": [
+      { "lvl": 5, "id": "rock_armor", "name": "Armadura Bruta", "desc": "Reduz dano recebido em 15% quando com HP cheio" },
+      { "lvl": 12, "id": "tremor_step", "name": "Passo Sismico", "desc": "Ataques físicos têm 25% de chance de atordoar (inimigo perde 1 turno)" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Esmagamento" }, { "lvl": 15, "card": "u", "name": "Terremoto" }]
+  },
+  {
+    "name": "Leviatrix", "el": "water", "body": "beast", "atk": 15, "def": 13, "shape": "round",
+    "tier": "bestial", "color": 27028, "desc": "Serpente abissal. Emerge das profundezas para devorar a luz.",
+    "passives": [
+      { "lvl": 5, "id": "abyssal_pull", "name": "Tração Abissal", "desc": "Inimigos atacados têm -10% DEF por 3 turnos" },
+      { "lvl": 12, "id": "tidal_surge", "name": "Maré Furiosa", "desc": "A cada 4 turnos, próximo ataque causa dano duplo" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Ondas Abissais" }, { "lvl": 15, "card": "u", "name": "Dilúvio Bestial" }]
+  },
+  {
+    "name": "Vombrath", "el": "dark", "body": "beast", "atk": 18, "def": 9, "shape": "spiky",
+    "tier": "bestial", "color": 4849794, "desc": "Predador das sombras que se alimenta do medo de suas presas.",
+    "passives": [
+      { "lvl": 5, "id": "fear_aura", "name": "Aura do Terror", "desc": "Inimigo começa a batalha com -15% ATQ" },
+      { "lvl": 12, "id": "shadow_step", "name": "Passo Sombrio", "desc": "20% de chance de esquivar completamente de um ataque" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Grito Sombrio" }, { "lvl": 15, "card": "u", "name": "Eclipsar" }]
+  },
+  {
+    "name": "Fulgaris", "el": "electric", "body": "beast", "atk": 16, "def": 10, "shape": "spiky",
+    "tier": "bestial", "color": 16776960, "desc": "Fera elétrica que canaliza raios direto da atmosfera.",
+    "passives": [
+      { "lvl": 5, "id": "static_field", "name": "Campo Estático", "desc": "Inimigos que atacam recebem 8 de dano de retorno" },
+      { "lvl": 12, "id": "chain_bolt", "name": "Relâmpago Duplo", "desc": "Ataques elétricos têm 35% de chance de acertar duas vezes" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Carga Elétrica" }, { "lvl": 15, "card": "u", "name": "Tempestade Bestial" }]
+  },
+  {
+    "name": "Sylvara", "el": "nature", "body": "beast", "atk": 13, "def": 15, "shape": "round",
+    "tier": "bestial", "color": 2263842, "desc": "Espírito da floresta primordial. Sua presença faz as plantas crescerem selvagemente.",
+    "passives": [
+      { "lvl": 5, "id": "overgrowth", "name": "Crescimento Voraz", "desc": "Regenera 8% do HP máximo por turno" },
+      { "lvl": 12, "id": "thorns_mantle", "name": "Manto de Espinhos", "desc": "Reflete 25% do dano recebido ao atacante" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Espinhos Vivos" }, { "lvl": 15, "card": "u", "name": "Floresta Selvagem" }]
+  },
+  {
+    "name": "Luminael", "el": "light", "body": "angelic", "atk": 11, "def": 14, "shape": "round",
+    "tier": "angelic", "color": 16773280, "desc": "Mensageiro de luz etérea. Sua presença cura o que está partido.",
+    "passives": [
+      { "lvl": 5, "id": "divine_aura", "name": "Aura Divina", "desc": "Todas as criaturas aliadas regeneram +5 HP por turno" },
+      { "lvl": 12, "id": "holy_shield", "name": "Escudo Sagrado", "desc": "Uma vez por batalha, nega dano letal (sobrevive com 1 HP)" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Luz Curativa" }, { "lvl": 15, "card": "u", "name": "Bênção Celeste" }]
+  },
+  {
+    "name": "Seraphis", "el": "light", "body": "angelic", "atk": 14, "def": 12, "shape": "spiky",
+    "tier": "angelic", "color": 16769152, "desc": "Guerreiro celestial. Suas asas deixam rastros de estrelas.",
+    "passives": [
+      { "lvl": 5, "id": "star_blade", "name": "Lâmina Estelar", "desc": "Ataques têm +15% de dano contra criaturas de tipo Escuridão" },
+      { "lvl": 12, "id": "radiant_burst", "name": "Explosão Radiante", "desc": "A cada 5 turnos, cura 20% do HP e aumenta ATQ em 20% por 2 turnos" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Golpe Celestial" }, { "lvl": 15, "card": "u", "name": "Juízo Divino" }]
+  },
+  {
+    "name": "Caelith", "el": "electric", "body": "angelic", "atk": 16, "def": 10, "shape": "spiky",
+    "tier": "angelic", "color": 13625343, "desc": "Arauto dos céus de cristal. Comanda raios sagrados com precisão cirúrgica.",
+    "passives": [
+      { "lvl": 5, "id": "sacred_bolt", "name": "Raio Sagrado", "desc": "Ataques elétricos curam 10% do dano causado" },
+      { "lvl": 12, "id": "ascendance", "name": "Ascensão", "desc": "Quando eliminado, restaura 30% do HP do próximo aliado" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Faísca Sagrada" }, { "lvl": 15, "card": "u", "name": "Julgamento Elétrico" }]
+  },
+  {
+    "name": "Elyara", "el": "water", "body": "angelic", "atk": 10, "def": 16, "shape": "round",
+    "tier": "angelic", "color": 10543359, "desc": "Guardiã das águas santas. Suas lágrimas purificam qualquer veneno.",
+    "passives": [
+      { "lvl": 5, "id": "purify", "name": "Purificação", "desc": "Ao final de cada turno, remove 1 efeito negativo de criaturas aliadas" },
+      { "lvl": 12, "id": "tide_of_grace", "name": "Maré de Graça", "desc": "Cura equivale a 130% em vez de 100%" }
+    ],
+    "learns": [{ "lvl": 8, "card": "m2", "name": "Chuva Sagrada" }, { "lvl": 15, "card": "u", "name": "Dilúvio Angelical" }]
+  }
+]
