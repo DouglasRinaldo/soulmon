@@ -9389,7 +9389,7 @@
 
     // Init — restore session on page load
     document.addEventListener('DOMContentLoaded', function () {
-      loadGameData().then(function (ok) {
+      loadStaticData().then(function (ok) {
         if (!ok) {
           alert('Erro ao carregar dados do jogo. Verifique o console.');
           return;
@@ -13220,40 +13220,40 @@
     var SAVE_KEY_PREFIX = 'soulmon_save_v1_';
     var SAVE_LIST_KEY = 'soulmon_savelist_v1';
 
-    function getSaveList() {
-      try { return JSON.parse(localStorage.getItem(SAVE_LIST_KEY)) || []; } catch (e) { return []; }
-    }
+    // function getSaveList() {
+    //   try { return JSON.parse(localStorage.getItem(SAVE_LIST_KEY)) || []; } catch (e) { return []; }
+    // }
 
-    function updateSaveList(pname, dataSummary) {
-      var list = getSaveList();
-      var idx = list.findIndex(function (s) { return s.name === pname; });
-      var entry = { name: pname, souls: dataSummary.souls, alive: dataSummary.alive, time: Date.now() };
-      if (idx >= 0) list[idx] = entry; else list.push(entry);
-      list.sort(function (a, b) { return b.time - a.time; });
-      localStorage.setItem(SAVE_LIST_KEY, JSON.stringify(list));
-    }
+    // function updateSaveList(pname, dataSummary) {
+    //   var list = getSaveList();
+    //   var idx = list.findIndex(function (s) { return s.name === pname; });
+    //   var entry = { name: pname, souls: dataSummary.souls, alive: dataSummary.alive, time: Date.now() };
+    //   if (idx >= 0) list[idx] = entry; else list.push(entry);
+    //   list.sort(function (a, b) { return b.time - a.time; });
+    //   localStorage.setItem(SAVE_LIST_KEY, JSON.stringify(list));
+    // }
 
-    function saveGame() {
-      try {
-        if (!G.playerName) return;
-        // Strip null slots before saving — nulls are display-only in renderHall
-        G.team = G.team.filter(function (x) { return x !== null; });
-        var data = { playerName: G.playerName, souls: G.souls, team: G.team, hall: G.hall, dead: G.dead, items: G.items, activeIdx: G.activeIdx, areaWins: G.areaWins, bestiary: G.bestiary || {}, discoveredSpecials: G.discoveredSpecials || {}, relicInventory: G.relicInventory || [], equippedRelic: G.equippedRelic || null, viveiro: G.viveiro || [], quests: G.quests || {}, buffs: G.buffs || {}, bossDefeated: G.bossDefeated || [false, false, false, false, false, false], areaKills: G.areaKills || [0, 0, 0, 0, 0, 0], areaItems: G.areaItems || [0, 0, 0, 0, 0, 0], hero: G.hero || null, plane: G.plane || 0, planePos: G.planePos || {}, planeBossDefeated: G.planeBossDefeated || [false, false, false] };
-        // Local save (always)
-        localStorage.setItem(SAVE_KEY_PREFIX + G.playerName, JSON.stringify(data));
-        var alive = G.team.filter(function (c) { return !c.dead; }).length;
-        updateSaveList(G.playerName, { souls: G.souls, alive: alive });
-        // Cloud save (if logged in) — fire and forget
-        if (typeof sbSaveGame === 'function' && SB && SB.token) {
-          sbSaveGame(G.playerName, data).catch(function () { });
-        }
-      } catch (e) { }
-    }
+    // function saveGame() {
+    //   try {
+    //     if (!G.playerName) return;
+    //     // Strip null slots before saving — nulls are display-only in renderHall
+    //     G.team = G.team.filter(function (x) { return x !== null; });
+    //     var data = { playerName: G.playerName, souls: G.souls, team: G.team, hall: G.hall, dead: G.dead, items: G.items, activeIdx: G.activeIdx, areaWins: G.areaWins, bestiary: G.bestiary || {}, discoveredSpecials: G.discoveredSpecials || {}, relicInventory: G.relicInventory || [], equippedRelic: G.equippedRelic || null, viveiro: G.viveiro || [], quests: G.quests || {}, buffs: G.buffs || {}, bossDefeated: G.bossDefeated || [false, false, false, false, false, false], areaKills: G.areaKills || [0, 0, 0, 0, 0, 0], areaItems: G.areaItems || [0, 0, 0, 0, 0, 0], hero: G.hero || null, plane: G.plane || 0, planePos: G.planePos || {}, planeBossDefeated: G.planeBossDefeated || [false, false, false] };
+    //     // Local save (always)
+    //     localStorage.setItem(SAVE_KEY_PREFIX + G.playerName, JSON.stringify(data));
+    //     var alive = G.team.filter(function (c) { return !c.dead; }).length;
+    //     updateSaveList(G.playerName, { souls: G.souls, alive: alive });
+    //     // Cloud save (if logged in) — fire and forget
+    //     if (typeof sbSaveGame === 'function' && SB && SB.token) {
+    //       sbSaveGame(G.playerName, data).catch(function () { });
+    //     }
+    //   } catch (e) { }
+    // }
 
-    function manualSave() {
-      saveGame();
-      notify('Jogo Salvo: ' + G.playerName);
-    }
+    // function manualSave() {
+    //   saveGame();
+    //   notify('Jogo Salvo: ' + G.playerName);
+    // }
 
     function loadGameData(pname) {
       try {
@@ -13288,10 +13288,10 @@
       } catch (e) { return false; }
     }
 
-    function hasSave() {
-      var list = getSaveList();
-      return list.length > 0;
-    }
+    // function hasSave() {
+    //   var list = getSaveList();
+    //   return list.length > 0;
+    // }
 
     // ===== TITLE SCREEN OVERLAYS =====
     function showNewGameModal() {
@@ -13589,21 +13589,21 @@
     }
 
     // ===== REGEN =====
-    function startRegen() {
-      if (G.regenInt) clearInterval(G.regenInt);
-      G.regenInt = setInterval(function () {
-        G.hall.forEach(function (c) {
-          if (!c.dead && c.hp < c.maxHp)
-            c.hp = Math.min(c.maxHp, c.hp + Math.max(1, Math.floor(c.maxHp * REGEN_HALL)));
-        });
-        G.team.forEach(function (c) {
-          if (!c.dead && c.hp < c.maxHp)
-            c.hp = Math.min(c.maxHp, c.hp + Math.max(1, Math.floor(c.maxHp * REGEN_TEAM)));
-        });
-        if (document.getElementById('hall-ov').style.display !== 'none') renderHall();
-        if (document.getElementById('explore').style.display !== 'none') renderExpC();
-      }, REGEN_MS);
-    }
+    // function startRegen() {
+    //   if (G.regenInt) clearInterval(G.regenInt);
+    //   G.regenInt = setInterval(function () {
+    //     G.hall.forEach(function (c) {
+    //       if (!c.dead && c.hp < c.maxHp)
+    //         c.hp = Math.min(c.maxHp, c.hp + Math.max(1, Math.floor(c.maxHp * REGEN_HALL)));
+    //     });
+    //     G.team.forEach(function (c) {
+    //       if (!c.dead && c.hp < c.maxHp)
+    //         c.hp = Math.min(c.maxHp, c.hp + Math.max(1, Math.floor(c.maxHp * REGEN_TEAM)));
+    //     });
+    //     if (document.getElementById('hall-ov').style.display !== 'none') renderHall();
+    //     if (document.getElementById('explore').style.display !== 'none') renderExpC();
+    //   }, REGEN_MS);
+    // }
 
     // ===== EXPLORE =====
     function cleanupDeadTeam() {
@@ -16152,9 +16152,9 @@
 
 
     // ===== UTILS & OVERLAYS =====
-    function addItem(id) { var ex = G.items.find(function (i) { return i.id === id; }); if (ex) ex.qty++; else G.items.push({ id: id, qty: 1 }); }
-    function totalItems() { return G.items.reduce(function (s, i) { return s + i.qty; }, 0); }
-    function totalUniqueItems() { var count = 0;['fire', 'water', 'earth', 'dark', 'light'].forEach(function (el) { if (G.items.some(function (i) { return i.id === el && i.qty > 0; })) count++; }); return count; }
+    // function addItem(id) { var ex = G.items.find(function (i) { return i.id === id; }); if (ex) ex.qty++; else G.items.push({ id: id, qty: 1 }); }
+    // function totalItems() { return G.items.reduce(function (s, i) { return s + i.qty; }, 0); }
+    // function totalUniqueItems() { var count = 0;['fire', 'water', 'earth', 'dark', 'light'].forEach(function (el) { if (G.items.some(function (i) { return i.id === el && i.qty > 0; })) count++; }); return count; }
 
     function showDropToast(msg) {
       var el = document.createElement('div'); el.className = 'dtoast'; el.textContent = 'RELIQUIA: ' + msg;
@@ -23369,6 +23369,7 @@
   <script src="./src/creatures.js"></script>
   <script src="./src/battle.js"></script>
   <script src="./src/world.js"></script>
+  <script src="./src/save.js"></script>
   <!-- DATA LOADER -->
   <script src="./data-loader.js"></script>
 

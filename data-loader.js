@@ -1,11 +1,15 @@
 // =====================================================
 // data-loader.js — Soulmon Fase 1
-// Carrega todos os dados do jogo de arquivos JSON
-// externos e disponibiliza como variáveis globais,
-// mantendo compatibilidade total com o código atual.
+// Carrega todos os dados estáticos do jogo de arquivos
+// JSON externos e disponibiliza como variáveis globais.
+//
+// ATENÇÃO: Esta função se chama loadStaticData() —
+// NÃO loadGameData() — para não conflitar com a
+// função loadGameData(pname) do bundle, que é
+// responsável por carregar o save do jogador.
 // =====================================================
 
-async function loadGameData() {
+async function loadStaticData() {
   try {
     const [creaturesRes, areasRes, cardsRes, evolutionsRes, itemsRes, weaponsRes] = await Promise.all([
       fetch('./data/creatures.json'),
@@ -23,25 +27,20 @@ async function loadGameData() {
     if (!itemsRes.ok)       throw new Error('Falha ao carregar items.json');
     if (!weaponsRes.ok)     throw new Error('Falha ao carregar weapons.json');
 
-    // Criaturas e áreas
     window.TPLS  = await creaturesRes.json();
     window.AREAS = await areasRes.json();
 
-    // Cards e pools de batalha
     const cardsData      = await cardsRes.json();
     window.CARDS         = cardsData.CARDS;
     window.CARD_POOLS    = cardsData.CARD_POOLS;
 
-    // Evoluções
     window.EVO_TABLE     = await evolutionsRes.json();
 
-    // Itens (loja, herói, batalha)
     const itemsData      = await itemsRes.json();
     window.VENDOR_STOCK  = itemsData.VENDOR_STOCK;
     window.HERO_ITEMS    = itemsData.HERO_ITEMS;
     window.BATTLE_ITEMS  = itemsData.BATTLE_ITEMS;
 
-    // Armas
     window.WEAPONS       = await weaponsRes.json();
 
     console.log(
@@ -61,5 +60,4 @@ async function loadGameData() {
   }
 }
 
-// Expõe para uso global (compatibilidade com o bundle atual)
-window.loadGameData = loadGameData;
+window.loadStaticData = loadStaticData;
