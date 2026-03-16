@@ -9853,118 +9853,118 @@
     //   }
     // ];
 
-    var CARDS = {
-      fire: {
-        b: { n: 'Golpe Igneo', d: 'Ataque basico de fogo', m: 1.0, p: 'M5 19L19 5M9 9l6 6' },
-        m1: { n: 'Chama Sonica', d: 'Onda de calor intensa', m: 1.8, p: 'M3 12Q6 7 9 12Q12 17 15 12Q18 7 21 12' },
-        m2: { n: 'Vulcao', d: 'Aplica QUEIMADURA(3)', m: 2.1, p: 'M3 20L8 10l4 5 4-7 5 12z', status: 'burn' },
-        u: { n: 'Purgacao Solar', d: 'Fogo que purifica', m: 3.2, p: 'M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M12 8a4 4 0 100 8 4 4 0 000-8z' }
-      },
-      water: {
-        b: { n: 'Fluxo Glacial', d: 'Ataque basico de agua', m: 1.0, p: 'M12 3s-6 7-6 12a6 6 0 0012 0c0-5-6-12-6-12z' },
-        m1: { n: 'Tsunami', d: 'Onda devastadora', m: 1.8, p: 'M2 12Q5 6 8 12Q11 18 14 12Q17 6 22 12' },
-        m2: { n: 'Vortice', d: 'Cria ESCUDO(DEF*1.2)', m: 0, p: 'M12 2a10 10 0 110 20A10 10 0 0112 2M12 7v5l3 3', status: 'shield' },
-        u: { n: 'Diluvio Eterno', d: 'Inunda o campo', m: 3.2, p: 'M8 19v3M12 19v3M16 19v3M3 10h18M5 10C5 6 8 3 12 3s7 3 7 7' }
-      },
-      earth: {
-        b: { n: 'Soco Petreo', d: 'Ataque basico de terra', m: 1.0, p: 'M4 20L8 12l4 4 4-8 4 12z' },
-        m1: { n: 'Terremoto', d: 'Abala o solo', m: 1.8, p: 'M2 20L9 6l5 8 3-4 5 10z' },
-        m2: { n: 'Espinhos', d: 'Aplica VENENO(3 stacks)', m: 2.1, p: 'M12 2C6 2 2 8 2 14l10-4-2 12c4-2 8-8 8-14-1-3-3-5-6-6z', status: 'poison' },
-        u: { n: 'Cataclismo', d: 'A terra se parte', m: 3.2, p: 'M13 2L5 13h7l-1 9 8-12h-7z' }
-      },
-      dark: {
-        b: { n: 'Toque Sombrio', d: 'Ataque basico sombra', m: 1.0, p: 'M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z' },
-        m1: { n: 'Alma Negra', d: 'DRENO: rouba 35% do dano', m: 1.6, p: 'M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7zM12 9a3 3 0 100 6 3 3 0 000-6z', status: 'drain' },
-        m2: { n: 'Maldicao', d: 'Corroi por dentro', m: 2.1, p: 'M12 2C8 2 5 5 5 9c0 2.5 1.5 4.5 3 6H8v3h8v-3h-.5c1.5-1.5 3-3.5 3-6 0-4-3-7-6.5-7z' },
-        u: { n: 'Vazio Absoluto', d: 'Apaga existencia', m: 3.2, p: 'M12 2a10 10 0 100 20 10 10 0 000-20zM8 12h8M12 8v8' }
-      },
-      light: {
-        b: { n: 'Golpe Sagrado', d: 'Ataque basico luz', m: 1.0, p: 'M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z' },
-        m1: { n: 'Julgamento', d: 'Raio divino', m: 1.8, p: 'M13 2L4 14h7l-1 8 9-12h-7z' },
-        m2: { n: 'Barreira', d: 'Reflete e contra-ataca', m: 2.1, p: 'M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7z' },
-        u: { n: 'Apocalipse', d: 'Aplica PARALISIA(2t)', m: 3.2, p: 'M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12M12 8a4 4 0 100 8 4 4 0 000-8z', status: 'paralyze' }
-      },
-      nature: {
-        b: { n: 'Folha Navalha', d: 'Ataque basico de natureza', m: 1.0, p: 'M12 2L15.09 5.09L19 9L15.09 12.91L12 16L8.91 12.91L5 9L8.91 5.09L12 2Z' },
-        m1: { n: 'Cipo Chicote', d: 'Dano de natureza moderado', m: 1.7, p: 'M2 12C2 12 5 2 12 2S22 12 22 12S19 22 12 22S2 12 2 12Z' },
-        m2: { n: 'Raizes Vampiricas', d: 'DRENO: rouba 40% do dano', m: 1.5, p: 'M12 22C12 22 20 18 20 12C20 6 12 2 12 2S4 6 4 12C4 18 12 22 12 22Z', status: 'drain' },
-        u: { n: 'Ira de Gaia', d: 'Dano massivo e envenena', m: 3.4, p: 'M12 2L2 22H22L12 2Z', status: 'poison' }
-      },
-      electric: {
-        b: { n: 'Faisca', d: 'Ataque basico eletrico', m: 1.0, p: 'M13 2L3 14H12L11 22L21 10H12L13 2Z' },
-        m1: { n: 'Relampago', d: 'Raio veloz e potente', m: 1.9, p: 'M13 2L3 14H12L11 22L21 10H12L13 2Z' },
-        m2: { n: 'Sobrecarga', d: 'Aplica PARALISIA(1t)', m: 2.2, p: 'M13 2L3 14H12L11 22L21 10H12L13 2Z', status: 'paralyze' },
-        u: { n: 'Tempestade de Ions', d: 'Dano eletrico devastador', m: 3.5, p: 'M13 2L3 14H12L11 22L21 10H12L13 2Z' }
-      },
+    // var CARDS = {
+    //   fire: {
+    //     b: { n: 'Golpe Igneo', d: 'Ataque basico de fogo', m: 1.0, p: 'M5 19L19 5M9 9l6 6' },
+    //     m1: { n: 'Chama Sonica', d: 'Onda de calor intensa', m: 1.8, p: 'M3 12Q6 7 9 12Q12 17 15 12Q18 7 21 12' },
+    //     m2: { n: 'Vulcao', d: 'Aplica QUEIMADURA(3)', m: 2.1, p: 'M3 20L8 10l4 5 4-7 5 12z', status: 'burn' },
+    //     u: { n: 'Purgacao Solar', d: 'Fogo que purifica', m: 3.2, p: 'M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M12 8a4 4 0 100 8 4 4 0 000-8z' }
+    //   },
+    //   water: {
+    //     b: { n: 'Fluxo Glacial', d: 'Ataque basico de agua', m: 1.0, p: 'M12 3s-6 7-6 12a6 6 0 0012 0c0-5-6-12-6-12z' },
+    //     m1: { n: 'Tsunami', d: 'Onda devastadora', m: 1.8, p: 'M2 12Q5 6 8 12Q11 18 14 12Q17 6 22 12' },
+    //     m2: { n: 'Vortice', d: 'Cria ESCUDO(DEF*1.2)', m: 0, p: 'M12 2a10 10 0 110 20A10 10 0 0112 2M12 7v5l3 3', status: 'shield' },
+    //     u: { n: 'Diluvio Eterno', d: 'Inunda o campo', m: 3.2, p: 'M8 19v3M12 19v3M16 19v3M3 10h18M5 10C5 6 8 3 12 3s7 3 7 7' }
+    //   },
+    //   earth: {
+    //     b: { n: 'Soco Petreo', d: 'Ataque basico de terra', m: 1.0, p: 'M4 20L8 12l4 4 4-8 4 12z' },
+    //     m1: { n: 'Terremoto', d: 'Abala o solo', m: 1.8, p: 'M2 20L9 6l5 8 3-4 5 10z' },
+    //     m2: { n: 'Espinhos', d: 'Aplica VENENO(3 stacks)', m: 2.1, p: 'M12 2C6 2 2 8 2 14l10-4-2 12c4-2 8-8 8-14-1-3-3-5-6-6z', status: 'poison' },
+    //     u: { n: 'Cataclismo', d: 'A terra se parte', m: 3.2, p: 'M13 2L5 13h7l-1 9 8-12h-7z' }
+    //   },
+    //   dark: {
+    //     b: { n: 'Toque Sombrio', d: 'Ataque basico sombra', m: 1.0, p: 'M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z' },
+    //     m1: { n: 'Alma Negra', d: 'DRENO: rouba 35% do dano', m: 1.6, p: 'M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7zM12 9a3 3 0 100 6 3 3 0 000-6z', status: 'drain' },
+    //     m2: { n: 'Maldicao', d: 'Corroi por dentro', m: 2.1, p: 'M12 2C8 2 5 5 5 9c0 2.5 1.5 4.5 3 6H8v3h8v-3h-.5c1.5-1.5 3-3.5 3-6 0-4-3-7-6.5-7z' },
+    //     u: { n: 'Vazio Absoluto', d: 'Apaga existencia', m: 3.2, p: 'M12 2a10 10 0 100 20 10 10 0 000-20zM8 12h8M12 8v8' }
+    //   },
+    //   light: {
+    //     b: { n: 'Golpe Sagrado', d: 'Ataque basico luz', m: 1.0, p: 'M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z' },
+    //     m1: { n: 'Julgamento', d: 'Raio divino', m: 1.8, p: 'M13 2L4 14h7l-1 8 9-12h-7z' },
+    //     m2: { n: 'Barreira', d: 'Reflete e contra-ataca', m: 2.1, p: 'M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7z' },
+    //     u: { n: 'Apocalipse', d: 'Aplica PARALISIA(2t)', m: 3.2, p: 'M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12M12 8a4 4 0 100 8 4 4 0 000-8z', status: 'paralyze' }
+    //   },
+    //   nature: {
+    //     b: { n: 'Folha Navalha', d: 'Ataque basico de natureza', m: 1.0, p: 'M12 2L15.09 5.09L19 9L15.09 12.91L12 16L8.91 12.91L5 9L8.91 5.09L12 2Z' },
+    //     m1: { n: 'Cipo Chicote', d: 'Dano de natureza moderado', m: 1.7, p: 'M2 12C2 12 5 2 12 2S22 12 22 12S19 22 12 22S2 12 2 12Z' },
+    //     m2: { n: 'Raizes Vampiricas', d: 'DRENO: rouba 40% do dano', m: 1.5, p: 'M12 22C12 22 20 18 20 12C20 6 12 2 12 2S4 6 4 12C4 18 12 22 12 22Z', status: 'drain' },
+    //     u: { n: 'Ira de Gaia', d: 'Dano massivo e envenena', m: 3.4, p: 'M12 2L2 22H22L12 2Z', status: 'poison' }
+    //   },
+    //   electric: {
+    //     b: { n: 'Faisca', d: 'Ataque basico eletrico', m: 1.0, p: 'M13 2L3 14H12L11 22L21 10H12L13 2Z' },
+    //     m1: { n: 'Relampago', d: 'Raio veloz e potente', m: 1.9, p: 'M13 2L3 14H12L11 22L21 10H12L13 2Z' },
+    //     m2: { n: 'Sobrecarga', d: 'Aplica PARALISIA(1t)', m: 2.2, p: 'M13 2L3 14H12L11 22L21 10H12L13 2Z', status: 'paralyze' },
+    //     u: { n: 'Tempestade de Ions', d: 'Dano eletrico devastador', m: 3.5, p: 'M13 2L3 14H12L11 22L21 10H12L13 2Z' }
+    //   },
 
-      // ══════════════════════════════════════════════
-      // HYBRID ELEMENT CARDS
-      // ══════════════════════════════════════════════
+    //   // ══════════════════════════════════════════════
+    //   // HYBRID ELEMENT CARDS
+    //   // ══════════════════════════════════════════════
 
-      // VAPOR (Fogo + Água) — ofensivo, cegamento
-      vapor: {
-        b: { n: 'Jato de Vapor', d: 'Jato escaldante básico', m: 1.0, p: 'M3 8Q8 4 12 8Q16 12 21 8' },
-        m1: { n: 'Névoa Cegante', d: 'Vapor denso: -30% precisão inimigo (2t)', m: 1.6, p: 'M2 12Q6 4 12 4Q18 4 22 12Q18 20 12 20Q6 20 2 12Z', status: 'blind' },
-        m2: { n: 'Caldeirão', d: 'Aplica QUEIMADURA(2) + reduz DEF 20%', m: 2.0, p: 'M8 2v4H4v12h16V6h-4V2H8zM10 2h4v4h-4z', status: 'burn' },
-        u: { n: 'Explosão de Vapor', d: 'Superaquece — dano massivo + QUEIMADURA(4)', m: 3.8, p: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5', status: 'burn' }
-      },
+    //   // VAPOR (Fogo + Água) — ofensivo, cegamento
+    //   vapor: {
+    //     b: { n: 'Jato de Vapor', d: 'Jato escaldante básico', m: 1.0, p: 'M3 8Q8 4 12 8Q16 12 21 8' },
+    //     m1: { n: 'Névoa Cegante', d: 'Vapor denso: -30% precisão inimigo (2t)', m: 1.6, p: 'M2 12Q6 4 12 4Q18 4 22 12Q18 20 12 20Q6 20 2 12Z', status: 'blind' },
+    //     m2: { n: 'Caldeirão', d: 'Aplica QUEIMADURA(2) + reduz DEF 20%', m: 2.0, p: 'M8 2v4H4v12h16V6h-4V2H8zM10 2h4v4h-4z', status: 'burn' },
+    //     u: { n: 'Explosão de Vapor', d: 'Superaquece — dano massivo + QUEIMADURA(4)', m: 3.8, p: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5', status: 'burn' }
+    //   },
 
-      // ASHES (Fogo + Natureza) — DOT pesado
-      ashes: {
-        b: { n: 'Cinzada', d: 'Golpe de brasas residuais', m: 1.0, p: 'M12 2C8 2 4 6 4 11c0 3 2 6 5 8v3h6v-3c3-2 5-5 5-8 0-5-4-9-8-9z' },
-        m1: { n: 'Brasa Persistente', d: 'QUEIMADURA(5) — dano de DOT dobrado', m: 1.4, p: 'M3 20L8 10l4 5 4-7 5 12z', status: 'burn_heavy' },
-        m2: { n: 'Campo de Cinzas', d: 'Terreno queimado: -25% cura inimiga (3t)', m: 1.9, p: 'M2 20h20M7 20V10l5-8 5 8v10', status: 'antiheal' },
-        u: { n: 'Incêndio Florestal', d: 'Consume o campo — QUEIMADURA(6) + dano enorme', m: 3.6, p: 'M12 22C12 22 20 18 20 12C20 6 12 2 12 2S4 6 4 12C4 18 12 22 12 22Z', status: 'burn_heavy' }
-      },
+    //   // ASHES (Fogo + Natureza) — DOT pesado
+    //   ashes: {
+    //     b: { n: 'Cinzada', d: 'Golpe de brasas residuais', m: 1.0, p: 'M12 2C8 2 4 6 4 11c0 3 2 6 5 8v3h6v-3c3-2 5-5 5-8 0-5-4-9-8-9z' },
+    //     m1: { n: 'Brasa Persistente', d: 'QUEIMADURA(5) — dano de DOT dobrado', m: 1.4, p: 'M3 20L8 10l4 5 4-7 5 12z', status: 'burn_heavy' },
+    //     m2: { n: 'Campo de Cinzas', d: 'Terreno queimado: -25% cura inimiga (3t)', m: 1.9, p: 'M2 20h20M7 20V10l5-8 5 8v10', status: 'antiheal' },
+    //     u: { n: 'Incêndio Florestal', d: 'Consume o campo — QUEIMADURA(6) + dano enorme', m: 3.6, p: 'M12 22C12 22 20 18 20 12C20 6 12 2 12 2S4 6 4 12C4 18 12 22 12 22Z', status: 'burn_heavy' }
+    //   },
 
-      // STORM (Água + Trovão) — controle + alto dano
-      storm: {
-        b: { n: 'Descarga Molhada', d: 'Água condutora — ataque básico', m: 1.0, p: 'M13 2L3 14H12L11 22L21 10H12L13 2Z' },
-        m1: { n: 'Tempestade', d: 'Raio + Água: dano alto + PARALISIA(1t)', m: 2.1, p: 'M3 12Q6 4 12 4Q18 4 22 12', status: 'paralyze' },
-        m2: { n: 'Maré Elétrica', d: 'Onda que reduz ATK inimigo -35% (2t)', m: 1.7, p: 'M2 12Q5 6 8 12Q11 18 14 12Q17 6 22 12', status: 'weaken' },
-        u: { n: 'Olho da Tempestade', d: 'Furacão elétrico — dano devastador em cadeia', m: 4.0, p: 'M12 2a10 10 0 110 20A10 10 0 0112 2', status: 'paralyze' }
-      },
+    //   // STORM (Água + Trovão) — controle + alto dano
+    //   storm: {
+    //     b: { n: 'Descarga Molhada', d: 'Água condutora — ataque básico', m: 1.0, p: 'M13 2L3 14H12L11 22L21 10H12L13 2Z' },
+    //     m1: { n: 'Tempestade', d: 'Raio + Água: dano alto + PARALISIA(1t)', m: 2.1, p: 'M3 12Q6 4 12 4Q18 4 22 12', status: 'paralyze' },
+    //     m2: { n: 'Maré Elétrica', d: 'Onda que reduz ATK inimigo -35% (2t)', m: 1.7, p: 'M2 12Q5 6 8 12Q11 18 14 12Q17 6 22 12', status: 'weaken' },
+    //     u: { n: 'Olho da Tempestade', d: 'Furacão elétrico — dano devastador em cadeia', m: 4.0, p: 'M12 2a10 10 0 110 20A10 10 0 0112 2', status: 'paralyze' }
+    //   },
 
-      // MAGNET (Terra + Trovão) — controle de campo
-      magnet: {
-        b: { n: 'Pulso Magnético', d: 'Campo magnético básico', m: 1.0, p: 'M12 2v20M2 12h20' },
-        m1: { n: 'Atração Forçada', d: 'Puxa defesas: reduz DEF inimiga -40% (2t)', m: 1.5, p: 'M3 12h18M12 3v18', status: 'weaken_def' },
-        m2: { n: 'Impacto de Ferro', d: 'Golpe pesado amplificado pelo campo', m: 2.3, p: 'M2 20L9 6l5 8 3-4 5 10z' },
-        u: { n: 'Colapso Magnético', d: 'Inverte campo — converte DEF inimiga em dano', m: 3.5, p: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5', status: 'def_to_dmg' }
-      },
+    //   // MAGNET (Terra + Trovão) — controle de campo
+    //   magnet: {
+    //     b: { n: 'Pulso Magnético', d: 'Campo magnético básico', m: 1.0, p: 'M12 2v20M2 12h20' },
+    //     m1: { n: 'Atração Forçada', d: 'Puxa defesas: reduz DEF inimiga -40% (2t)', m: 1.5, p: 'M3 12h18M12 3v18', status: 'weaken_def' },
+    //     m2: { n: 'Impacto de Ferro', d: 'Golpe pesado amplificado pelo campo', m: 2.3, p: 'M2 20L9 6l5 8 3-4 5 10z' },
+    //     u: { n: 'Colapso Magnético', d: 'Inverte campo — converte DEF inimiga em dano', m: 3.5, p: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5', status: 'def_to_dmg' }
+    //   },
 
-      // TWILIGHT (Sombra + Luz) — roubo de buffs, dano puro
-      twilight: {
-        b: { n: 'Pulso Crepuscular', d: 'Energia entre luz e sombra', m: 1.0, p: 'M12 2L15 9h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z' },
-        m1: { n: 'Roubo de Essência', d: 'Rouba 1 buff ativo do inimigo + drena HP', m: 1.8, p: 'M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z', status: 'steal_buff' },
-        m2: { n: 'Dualidade', d: 'Ataca com luz E sombra: ignora resistência', m: 2.4, p: 'M12 2C6 2 2 7 2 12s4 10 10 10 10-5 10-10S18 2 12 2z' },
-        u: { n: 'Eclipse Total', d: 'Apaga buffs inimigos + dano maciço', m: 3.9, p: 'M12 2a10 10 0 110 20A10 10 0 0112 2M12 7v10M7 12h10', status: 'purge' }
-      },
+    //   // TWILIGHT (Sombra + Luz) — roubo de buffs, dano puro
+    //   twilight: {
+    //     b: { n: 'Pulso Crepuscular', d: 'Energia entre luz e sombra', m: 1.0, p: 'M12 2L15 9h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z' },
+    //     m1: { n: 'Roubo de Essência', d: 'Rouba 1 buff ativo do inimigo + drena HP', m: 1.8, p: 'M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z', status: 'steal_buff' },
+    //     m2: { n: 'Dualidade', d: 'Ataca com luz E sombra: ignora resistência', m: 2.4, p: 'M12 2C6 2 2 7 2 12s4 10 10 10 10-5 10-10S18 2 12 2z' },
+    //     u: { n: 'Eclipse Total', d: 'Apaga buffs inimigos + dano maciço', m: 3.9, p: 'M12 2a10 10 0 110 20A10 10 0 0112 2M12 7v10M7 12h10', status: 'purge' }
+    //   },
 
-      // ANCIENT (Terra + Natureza) — tank extremo, cura
-      ancient: {
-        b: { n: 'Golpe de Raiz', d: 'Raiz ancestral endurecida', m: 1.0, p: 'M12 22C12 22 20 18 20 12C20 6 12 2 12 2S4 6 4 12C4 18 12 22 12 22Z' },
-        m1: { n: 'Abraço da Floresta', d: 'Cura 25% HP + cria ESCUDO(DEF*1.5)', m: 0, p: 'M12 2C8 2 5 5 5 9c0 2.5 1.5 4.5 3 6H8v3h8v-3h-.5c1.5-1.5 3-3.5 3-6 0-4-3-7-6.5-7z', status: 'heal_shield' },
-        m2: { n: 'Espinhos Antigos', d: 'Reflete 40% dano recebido por 3t', m: 1.6, p: 'M12 2C6 2 2 8 2 14l10-4-2 12c4-2 8-8 8-14-1-3-3-5-6-6z', status: 'reflect' },
-        u: { n: 'Raízes do Mundo', d: 'Imobiliza + drena vida por 3t', m: 2.8, p: 'M3 20L9 6l5 8 3-4 5 10z', status: 'drain' }
-      },
+    //   // ANCIENT (Terra + Natureza) — tank extremo, cura
+    //   ancient: {
+    //     b: { n: 'Golpe de Raiz', d: 'Raiz ancestral endurecida', m: 1.0, p: 'M12 22C12 22 20 18 20 12C20 6 12 2 12 2S4 6 4 12C4 18 12 22 12 22Z' },
+    //     m1: { n: 'Abraço da Floresta', d: 'Cura 25% HP + cria ESCUDO(DEF*1.5)', m: 0, p: 'M12 2C8 2 5 5 5 9c0 2.5 1.5 4.5 3 6H8v3h8v-3h-.5c1.5-1.5 3-3.5 3-6 0-4-3-7-6.5-7z', status: 'heal_shield' },
+    //     m2: { n: 'Espinhos Antigos', d: 'Reflete 40% dano recebido por 3t', m: 1.6, p: 'M12 2C6 2 2 8 2 14l10-4-2 12c4-2 8-8 8-14-1-3-3-5-6-6z', status: 'reflect' },
+    //     u: { n: 'Raízes do Mundo', d: 'Imobiliza + drena vida por 3t', m: 2.8, p: 'M3 20L9 6l5 8 3-4 5 10z', status: 'drain' }
+    //   },
 
-      // VOIDARC (Sombra + Trovão) — assassino, ignora escudo
-      voidarc: {
-        b: { n: 'Arco do Vazio', d: 'Descarga de escuridão elétrica', m: 1.0, p: 'M13 2L3 14H12L11 22L21 10H12L13 2Z' },
-        m1: { n: 'Ignição Sombria', d: 'Ignora 50% do escudo — dano direto', m: 2.0, p: 'M12 2L2 7l10 5 10-5-10-5z', status: 'shield_pierce' },
-        m2: { n: 'Corrente Negra', d: 'PARALISIA(1t) + VENENO(3) simultâneos', m: 1.8, p: 'M13 2L3 14H12L11 22L21 10H12L13 2Z', status: 'multi_dot' },
-        u: { n: 'Pulsar do Abismo', d: 'Crit garantido + ignora toda defesa', m: 4.2, p: 'M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z', status: 'true_dmg' }
-      },
+    //   // VOIDARC (Sombra + Trovão) — assassino, ignora escudo
+    //   voidarc: {
+    //     b: { n: 'Arco do Vazio', d: 'Descarga de escuridão elétrica', m: 1.0, p: 'M13 2L3 14H12L11 22L21 10H12L13 2Z' },
+    //     m1: { n: 'Ignição Sombria', d: 'Ignora 50% do escudo — dano direto', m: 2.0, p: 'M12 2L2 7l10 5 10-5-10-5z', status: 'shield_pierce' },
+    //     m2: { n: 'Corrente Negra', d: 'PARALISIA(1t) + VENENO(3) simultâneos', m: 1.8, p: 'M13 2L3 14H12L11 22L21 10H12L13 2Z', status: 'multi_dot' },
+    //     u: { n: 'Pulsar do Abismo', d: 'Crit garantido + ignora toda defesa', m: 4.2, p: 'M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z', status: 'true_dmg' }
+    //   },
 
-      // AURORA (Luz + Água) — suporte + burst
-      aurora: {
-        b: { n: 'Toque Celestial', d: 'Luz purificada pela água', m: 1.0, p: 'M12 2L15 9h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z' },
-        m1: { n: 'Cura de Aurora', d: 'Cura 30% HP + remove 1 status negativo', m: 0, p: 'M13 2L4 14h7l-1 8 9-12h-7z', status: 'cleanse_heal' },
-        m2: { n: 'Raio Polar', d: 'Dano de luz amplificado pela água (+30%)', m: 2.2, p: 'M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z' },
-        u: { n: 'Borealis', d: 'Cura total + golpe devastador de luz', m: 3.7, p: 'M12 2L13.5 8h6l-5 3.5 2 6.5L12 14l-4.5 4 2-6.5L5 8h6z', status: 'cleanse_heal' }
-      }
-    };
+    //   // AURORA (Luz + Água) — suporte + burst
+    //   aurora: {
+    //     b: { n: 'Toque Celestial', d: 'Luz purificada pela água', m: 1.0, p: 'M12 2L15 9h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z' },
+    //     m1: { n: 'Cura de Aurora', d: 'Cura 30% HP + remove 1 status negativo', m: 0, p: 'M13 2L4 14h7l-1 8 9-12h-7z', status: 'cleanse_heal' },
+    //     m2: { n: 'Raio Polar', d: 'Dano de luz amplificado pela água (+30%)', m: 2.2, p: 'M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z' },
+    //     u: { n: 'Borealis', d: 'Cura total + golpe devastador de luz', m: 3.7, p: 'M12 2L13.5 8h6l-5 3.5 2 6.5L12 14l-4.5 4 2-6.5L5 8h6z', status: 'cleanse_heal' }
+    //   }
+    // };
 
     var ITEM_DEFS = [
       { id: 'fire', name: 'Cinza Elemental', ico: '*', desc: 'Fragmento de fogo aprisionado', rar: 'especial', col: '#ff5555' },
@@ -10199,24 +10199,24 @@
 
     // ===== EVOLUTION DATA =====
     // Each entry: base creature name -> evolved form
-    var EVO_TABLE = {
-      'Ignar': { name: 'Pyralith', hpMult: 1.22, atkMult: 1.25, defMult: 1.15, passive: 'blazing', desc: 'Forma ancestral das chamas. Queima mais intensamente a cada golpe.' },
-      'Torren': { name: 'Graniax', hpMult: 1.30, atkMult: 1.10, defMult: 1.35, passive: 'fortress', desc: 'Pedra viva e endurecida. Virtualmente indestrutivel em defesa.' },
-      'Aquilis': { name: 'Tidalon', hpMult: 1.20, atkMult: 1.28, defMult: 1.18, passive: 'torrent', desc: 'Controlador das mares. Cada ataque carrega a forca do oceano.' },
-      'Umbrath': { name: 'Vexshade', hpMult: 1.18, atkMult: 1.35, defMult: 1.12, passive: 'shadow_step', desc: 'Sombra materializada. Escapa de golpes e contra-ataca das trevas.' },
-      'Solael': { name: 'Auralith', hpMult: 1.25, atkMult: 1.22, defMult: 1.20, passive: 'radiance', desc: 'Pureza da luz condensada. Cura aliados ao vencer batalhas.' },
-      'Ferox': { name: 'Thornlord', hpMult: 1.28, atkMult: 1.20, defMult: 1.22, passive: 'thorns', desc: 'Espinhos que perfuram qualquer defesa. Reflete parte do dano recebido.' },
-      'Vexaris': { name: 'Hexalisk', hpMult: 1.15, atkMult: 1.40, defMult: 1.10, passive: 'venom', desc: 'Veneno que corroi a alma. Envenenamento causado e' + ' mais potente.' },
-      'Crestus': { name: 'Pinnacle', hpMult: 1.32, atkMult: 1.18, defMult: 1.28, passive: 'mountain', desc: 'Pico inquebravel. Resistente a status negativos.' },
-      'Pyrax': { name: 'Infernus', hpMult: 1.20, atkMult: 1.32, defMult: 1.15, passive: 'inferno', desc: 'Chama eterna que nao se apaga. Queimadura dura mais e causa mais dano.' },
-      'Gloamtide': { name: 'Abyssion', hpMult: 1.18, atkMult: 1.30, defMult: 1.20, passive: 'abyss', desc: 'Criatura do abismo profundo. Ganha forca nas trevas.' },
-      'Lumivex': { name: 'Solarius', hpMult: 1.22, atkMult: 1.25, defMult: 1.22, passive: 'dawn', desc: 'Aurora viva. Cura HP ao iniciar cada batalha.' },
-      'Mosskar': { name: 'Rootwarden', hpMult: 1.35, atkMult: 1.12, defMult: 1.30, passive: 'regrowth', desc: 'Guardiao das raizes. Regenera HP lentamente durante batalhas.' },
-      'Venari': { name: 'Toxivore', hpMult: 1.16, atkMult: 1.38, defMult: 1.12, passive: 'predator', desc: 'Predador das sombras. Causa dano adicional em alvos envenenados.' },
-      'Leafur': { name: 'Canopex', hpMult: 1.24, atkMult: 1.20, defMult: 1.24, passive: 'canopy', desc: 'Floresta ambulante. Bloqueia o primeiro golpe critico de cada batalha.' },
-      'Sparky': { name: 'Volthorn', hpMult: 1.18, atkMult: 1.35, defMult: 1.14, passive: 'static', desc: 'Eletricidade pura. Chance de paralisar ao atacar.' },
-      'Voltix': { name: 'Stormking', hpMult: 1.20, atkMult: 1.38, defMult: 1.18, passive: 'thunderlord', desc: 'Rei da tempestade. Dano eletrico amplificado durante tempestades.' },
-    };
+    // var EVO_TABLE = {
+    //   'Ignar': { name: 'Pyralith', hpMult: 1.22, atkMult: 1.25, defMult: 1.15, passive: 'blazing', desc: 'Forma ancestral das chamas. Queima mais intensamente a cada golpe.' },
+    //   'Torren': { name: 'Graniax', hpMult: 1.30, atkMult: 1.10, defMult: 1.35, passive: 'fortress', desc: 'Pedra viva e endurecida. Virtualmente indestrutivel em defesa.' },
+    //   'Aquilis': { name: 'Tidalon', hpMult: 1.20, atkMult: 1.28, defMult: 1.18, passive: 'torrent', desc: 'Controlador das mares. Cada ataque carrega a forca do oceano.' },
+    //   'Umbrath': { name: 'Vexshade', hpMult: 1.18, atkMult: 1.35, defMult: 1.12, passive: 'shadow_step', desc: 'Sombra materializada. Escapa de golpes e contra-ataca das trevas.' },
+    //   'Solael': { name: 'Auralith', hpMult: 1.25, atkMult: 1.22, defMult: 1.20, passive: 'radiance', desc: 'Pureza da luz condensada. Cura aliados ao vencer batalhas.' },
+    //   'Ferox': { name: 'Thornlord', hpMult: 1.28, atkMult: 1.20, defMult: 1.22, passive: 'thorns', desc: 'Espinhos que perfuram qualquer defesa. Reflete parte do dano recebido.' },
+    //   'Vexaris': { name: 'Hexalisk', hpMult: 1.15, atkMult: 1.40, defMult: 1.10, passive: 'venom', desc: 'Veneno que corroi a alma. Envenenamento causado e' + ' mais potente.' },
+    //   'Crestus': { name: 'Pinnacle', hpMult: 1.32, atkMult: 1.18, defMult: 1.28, passive: 'mountain', desc: 'Pico inquebravel. Resistente a status negativos.' },
+    //   'Pyrax': { name: 'Infernus', hpMult: 1.20, atkMult: 1.32, defMult: 1.15, passive: 'inferno', desc: 'Chama eterna que nao se apaga. Queimadura dura mais e causa mais dano.' },
+    //   'Gloamtide': { name: 'Abyssion', hpMult: 1.18, atkMult: 1.30, defMult: 1.20, passive: 'abyss', desc: 'Criatura do abismo profundo. Ganha forca nas trevas.' },
+    //   'Lumivex': { name: 'Solarius', hpMult: 1.22, atkMult: 1.25, defMult: 1.22, passive: 'dawn', desc: 'Aurora viva. Cura HP ao iniciar cada batalha.' },
+    //   'Mosskar': { name: 'Rootwarden', hpMult: 1.35, atkMult: 1.12, defMult: 1.30, passive: 'regrowth', desc: 'Guardiao das raizes. Regenera HP lentamente durante batalhas.' },
+    //   'Venari': { name: 'Toxivore', hpMult: 1.16, atkMult: 1.38, defMult: 1.12, passive: 'predator', desc: 'Predador das sombras. Causa dano adicional em alvos envenenados.' },
+    //   'Leafur': { name: 'Canopex', hpMult: 1.24, atkMult: 1.20, defMult: 1.24, passive: 'canopy', desc: 'Floresta ambulante. Bloqueia o primeiro golpe critico de cada batalha.' },
+    //   'Sparky': { name: 'Volthorn', hpMult: 1.18, atkMult: 1.35, defMult: 1.14, passive: 'static', desc: 'Eletricidade pura. Chance de paralisar ao atacar.' },
+    //   'Voltix': { name: 'Stormking', hpMult: 1.20, atkMult: 1.38, defMult: 1.18, passive: 'thunderlord', desc: 'Rei da tempestade. Dano eletrico amplificado durante tempestades.' },
+    // };
 
     // Evolution level threshold
     var EVO_LEVEL = 15;
@@ -17025,32 +17025,32 @@
       },
     ];
 
-    var VENDOR_STOCK = [
-      { id: 'potion_sm', icon: '🧪', name: 'Poção Menor', desc: 'Restaura 30% do HP de uma criatura do grupo.', cost: 90, type: 'consumable' },
-      { id: 'potion_lg', icon: '⚗', name: 'Poção Maior', desc: 'Restaura 70% do HP de uma criatura do grupo.', cost: 200, type: 'consumable' },
-      { id: 'orb_better', icon: '📖', name: 'Grimório Reforçado', desc: '+20% de chance de vinculacao na proxima batalha.', cost: 260, type: 'buff' },
-      { id: 'xp_boost', icon: '★', name: 'Tônico de Crescimento', desc: 'A criatura ativa ganha +50% XP na próxima batalha.', cost: 220, type: 'buff' },
-      { id: 'souls_map', icon: '🗺', name: 'Mapa das Almas', desc: 'Revela a localização de todos os santuários nesta área.', cost: 130, type: 'info' },
-      { id: 'elixir_atk', icon: '🔺', name: 'Elixir de Força', desc: '+20% ATQ por 3 turnos em batalha.', cost: 160, type: 'consumable' },
-      { id: 'elixir_def', icon: '🔷', name: 'Elixir de Pedra', desc: '+20% DEF por 3 turnos em batalha.', cost: 140, type: 'consumable' },
-      { id: 'antidote', icon: '💚', name: 'Antídoto', desc: 'Remove veneno e queimadura em batalha.', cost: 80, type: 'consumable' },
-      { id: 'bomb_fire', icon: '💣', name: 'Bomba de Fogo', desc: 'Causa 20–35 de dano puro ao inimigo em batalha.', cost: 120, type: 'consumable' },
-      // ── Itens do Herói ──
-      { id: 'hero_potion_sm', icon: '🫙', name: 'Poção do Caçador', desc: 'Restaura 40% do HP do herói no campo.', cost: 100, type: 'hero_consumable' },
-      { id: 'hero_potion_lg', icon: '✦', name: 'Elixir do Caçador', desc: 'Restaura 100% do HP do herói no campo.', cost: 280, type: 'hero_consumable' },
-      { id: 'hero_shield', icon: '🛡', name: 'Escama Protetora', desc: '+4 DEF permanente até o próximo descanso.', cost: 180, type: 'hero_consumable' },
-      { id: 'hero_rage', icon: '⚡', name: 'Pó de Fúria', desc: '+6 ATQ por 5 minutos no campo.', cost: 160, type: 'hero_consumable' },
-      { id: 'hero_revive', icon: '💎', name: 'Cristal de Ressurreição', desc: 'Revive o herói com 50% HP ao chegar em 0 (uso único).', cost: 400, type: 'hero_consumable' }
-    ];
+    // var VENDOR_STOCK = [
+    //   { id: 'potion_sm', icon: '🧪', name: 'Poção Menor', desc: 'Restaura 30% do HP de uma criatura do grupo.', cost: 90, type: 'consumable' },
+    //   { id: 'potion_lg', icon: '⚗', name: 'Poção Maior', desc: 'Restaura 70% do HP de uma criatura do grupo.', cost: 200, type: 'consumable' },
+    //   { id: 'orb_better', icon: '📖', name: 'Grimório Reforçado', desc: '+20% de chance de vinculacao na proxima batalha.', cost: 260, type: 'buff' },
+    //   { id: 'xp_boost', icon: '★', name: 'Tônico de Crescimento', desc: 'A criatura ativa ganha +50% XP na próxima batalha.', cost: 220, type: 'buff' },
+    //   { id: 'souls_map', icon: '🗺', name: 'Mapa das Almas', desc: 'Revela a localização de todos os santuários nesta área.', cost: 130, type: 'info' },
+    //   { id: 'elixir_atk', icon: '🔺', name: 'Elixir de Força', desc: '+20% ATQ por 3 turnos em batalha.', cost: 160, type: 'consumable' },
+    //   { id: 'elixir_def', icon: '🔷', name: 'Elixir de Pedra', desc: '+20% DEF por 3 turnos em batalha.', cost: 140, type: 'consumable' },
+    //   { id: 'antidote', icon: '💚', name: 'Antídoto', desc: 'Remove veneno e queimadura em batalha.', cost: 80, type: 'consumable' },
+    //   { id: 'bomb_fire', icon: '💣', name: 'Bomba de Fogo', desc: 'Causa 20–35 de dano puro ao inimigo em batalha.', cost: 120, type: 'consumable' },
+    //   // ── Itens do Herói ──
+    //   { id: 'hero_potion_sm', icon: '🫙', name: 'Poção do Caçador', desc: 'Restaura 40% do HP do herói no campo.', cost: 100, type: 'hero_consumable' },
+    //   { id: 'hero_potion_lg', icon: '✦', name: 'Elixir do Caçador', desc: 'Restaura 100% do HP do herói no campo.', cost: 280, type: 'hero_consumable' },
+    //   { id: 'hero_shield', icon: '🛡', name: 'Escama Protetora', desc: '+4 DEF permanente até o próximo descanso.', cost: 180, type: 'hero_consumable' },
+    //   { id: 'hero_rage', icon: '⚡', name: 'Pó de Fúria', desc: '+6 ATQ por 5 minutos no campo.', cost: 160, type: 'hero_consumable' },
+    //   { id: 'hero_revive', icon: '💎', name: 'Cristal de Ressurreição', desc: 'Revive o herói com 50% HP ao chegar em 0 (uso único).', cost: 400, type: 'hero_consumable' }
+    // ];
 
-    // ── Itens do Herói: efeitos e uso no campo ──
-    var HERO_ITEMS = {
-      'hero_potion_sm': { icon: '🫙', name: 'Poção do Caçador', desc: '+40% HP do herói', type: 'heal', val: 0.40 },
-      'hero_potion_lg': { icon: '✦', name: 'Elixir do Caçador', desc: 'HP do herói cheio', type: 'heal', val: 1.00 },
-      'hero_shield': { icon: '🛡', name: 'Escama Protetora', desc: '+4 DEF temporário', type: 'buff_def', val: 4, dur: 300000 },
-      'hero_rage': { icon: '⚡', name: 'Pó de Fúria', desc: '+6 ATQ temporário', type: 'buff_atk', val: 6, dur: 300000 },
-      'hero_revive': { icon: '💎', name: 'Cristal de Ressurreição', desc: 'Revive ao cair', type: 'revive', val: 0.50 },
-    };
+    // // ── Itens do Herói: efeitos e uso no campo ──
+    // var HERO_ITEMS = {
+    //   'hero_potion_sm': { icon: '🫙', name: 'Poção do Caçador', desc: '+40% HP do herói', type: 'heal', val: 0.40 },
+    //   'hero_potion_lg': { icon: '✦', name: 'Elixir do Caçador', desc: 'HP do herói cheio', type: 'heal', val: 1.00 },
+    //   'hero_shield': { icon: '🛡', name: 'Escama Protetora', desc: '+4 DEF temporário', type: 'buff_def', val: 4, dur: 300000 },
+    //   'hero_rage': { icon: '⚡', name: 'Pó de Fúria', desc: '+6 ATQ temporário', type: 'buff_atk', val: 6, dur: 300000 },
+    //   'hero_revive': { icon: '💎', name: 'Cristal de Ressurreição', desc: 'Revive ao cair', type: 'revive', val: 0.50 },
+    // };
 
     var _sancAIdx = 0;
     function openSanctuary(aIdx) {
@@ -18315,35 +18315,35 @@
     // HERO SYSTEM — stats, weapons, map combat
     // ============================================================
 
-    var WEAPONS = {
-      sword: {
-        icon: '⚔', name: 'Espada', atk: 12, range: 1.5, cd: 800, el: 'physical',
-        className: 'Guardião', classDesc: 'Protetor do grupo',
-        passives: [
-          { lvl: 3, id: 'guardian_taunt', name: 'Provocação', desc: 'Recebe 30% dos ataques inimigos destinados às criaturas' },
-          { lvl: 7, id: 'guardian_block', name: 'Escudo do Herói', desc: '20% chance de bloquear ataque (0 dano)' },
-          { lvl: 12, id: 'guardian_rally', name: 'Grito de Guerra', desc: 'Ao atacar, cura 5 HP da criatura ativa' }
-        ]
-      },
-      staff: {
-        icon: '🔮', name: 'Cajado Arcano', atk: 9, range: 2.2, cd: 1100, el: 'fire',
-        className: 'Arcano', classDesc: 'Amplificador de magia',
-        passives: [
-          { lvl: 3, id: 'arcane_amplify', name: 'Amplificação', desc: 'Ataques elementais de criaturas +15% de dano' },
-          { lvl: 7, id: 'arcane_channel', name: 'Canalização', desc: 'Ataque do herói tem 25% de chance de causar Queimadura' },
-          { lvl: 12, id: 'arcane_surge', name: 'Explosão Arcana', desc: 'Quando criatura usa Ult, herói ataca o inimigo imediatamente' }
-        ]
-      },
-      bow: {
-        icon: '🏹', name: 'Arco Élfico', atk: 8, range: 2.5, cd: 600, el: 'physical',
-        className: 'Caçador', classDesc: 'Mestre das emboscadas',
-        passives: [
-          { lvl: 3, id: 'hunter_firstblood', name: 'Emboscada', desc: 'Primeiro ataque em cada batalha causa +50% dano' },
-          { lvl: 7, id: 'hunter_swift', name: 'Tiro Veloz', desc: 'Velocidade de ataque do herói +25%' },
-          { lvl: 12, id: 'hunter_mark', name: 'Marca do Caçador', desc: 'Inimigos marcados recebem +20% de dano de criaturas' }
-        ]
-      }
-    };
+    // var WEAPONS = {
+    //   sword: {
+    //     icon: '⚔', name: 'Espada', atk: 12, range: 1.5, cd: 800, el: 'physical',
+    //     className: 'Guardião', classDesc: 'Protetor do grupo',
+    //     passives: [
+    //       { lvl: 3, id: 'guardian_taunt', name: 'Provocação', desc: 'Recebe 30% dos ataques inimigos destinados às criaturas' },
+    //       { lvl: 7, id: 'guardian_block', name: 'Escudo do Herói', desc: '20% chance de bloquear ataque (0 dano)' },
+    //       { lvl: 12, id: 'guardian_rally', name: 'Grito de Guerra', desc: 'Ao atacar, cura 5 HP da criatura ativa' }
+    //     ]
+    //   },
+    //   staff: {
+    //     icon: '🔮', name: 'Cajado Arcano', atk: 9, range: 2.2, cd: 1100, el: 'fire',
+    //     className: 'Arcano', classDesc: 'Amplificador de magia',
+    //     passives: [
+    //       { lvl: 3, id: 'arcane_amplify', name: 'Amplificação', desc: 'Ataques elementais de criaturas +15% de dano' },
+    //       { lvl: 7, id: 'arcane_channel', name: 'Canalização', desc: 'Ataque do herói tem 25% de chance de causar Queimadura' },
+    //       { lvl: 12, id: 'arcane_surge', name: 'Explosão Arcana', desc: 'Quando criatura usa Ult, herói ataca o inimigo imediatamente' }
+    //     ]
+    //   },
+    //   bow: {
+    //     icon: '🏹', name: 'Arco Élfico', atk: 8, range: 2.5, cd: 600, el: 'physical',
+    //     className: 'Caçador', classDesc: 'Mestre das emboscadas',
+    //     passives: [
+    //       { lvl: 3, id: 'hunter_firstblood', name: 'Emboscada', desc: 'Primeiro ataque em cada batalha causa +50% dano' },
+    //       { lvl: 7, id: 'hunter_swift', name: 'Tiro Veloz', desc: 'Velocidade de ataque do herói +25%' },
+    //       { lvl: 12, id: 'hunter_mark', name: 'Marca do Caçador', desc: 'Inimigos marcados recebem +20% de dano de criaturas' }
+    //     ]
+    //   }
+    // };
 
     function heroXpNext(lvl) { return Math.floor(30 + lvl * 18); }
 
@@ -20502,14 +20502,14 @@
     // ══════════════════════════════════════════════════════════════
     // BATTLE CONSUMABLES — catálogo + funções de uso em batalha
     // ══════════════════════════════════════════════════════════════
-    var BATTLE_ITEMS = {
-      'potion_sm': { icon: '🧪', name: 'Poção Menor', desc: '+30% HP criatura ativa', type: 'heal', val: 0.30 },
-      'potion_lg': { icon: '⚗', name: 'Poção Maior', desc: '+70% HP criatura ativa', type: 'heal', val: 0.70 },
-      'elixir_atk': { icon: '🔺', name: 'Elixir de Força', desc: '+20% ATQ por 3 turnos', type: 'buff_atk', val: 3 },
-      'elixir_def': { icon: '🔷', name: 'Elixir de Pedra', desc: '+20% DEF por 3 turnos', type: 'buff_def', val: 3 },
-      'antidote': { icon: '💚', name: 'Antídoto', desc: 'Remove veneno e queimadura', type: 'cleanse', val: 0 },
-      'bomb_fire': { icon: '💣', name: 'Bomba de Fogo', desc: '20-35 de dano puro ao inimigo', type: 'damage', val: 30 },
-    };
+    // var BATTLE_ITEMS = {
+    //   'potion_sm': { icon: '🧪', name: 'Poção Menor', desc: '+30% HP criatura ativa', type: 'heal', val: 0.30 },
+    //   'potion_lg': { icon: '⚗', name: 'Poção Maior', desc: '+70% HP criatura ativa', type: 'heal', val: 0.70 },
+    //   'elixir_atk': { icon: '🔺', name: 'Elixir de Força', desc: '+20% ATQ por 3 turnos', type: 'buff_atk', val: 3 },
+    //   'elixir_def': { icon: '🔷', name: 'Elixir de Pedra', desc: '+20% DEF por 3 turnos', type: 'buff_def', val: 3 },
+    //   'antidote': { icon: '💚', name: 'Antídoto', desc: 'Remove veneno e queimadura', type: 'cleanse', val: 0 },
+    //   'bomb_fire': { icon: '💣', name: 'Bomba de Fogo', desc: '20-35 de dano puro ao inimigo', type: 'damage', val: 30 },
+    // };
 
     function toggleBattleItems() {
       var panel = document.getElementById('battle-items-panel');

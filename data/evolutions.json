@@ -1,0 +1,130 @@
+{
+  "Ignar": {
+    "name": "Pyralith",
+    "hpMult": 1.22,
+    "atkMult": 1.25,
+    "defMult": 1.15,
+    "passive": "blazing",
+    "desc": "Forma ancestral das chamas. Queima mais intensamente a cada golpe."
+  },
+  "Torren": {
+    "name": "Graniax",
+    "hpMult": 1.3,
+    "atkMult": 1.1,
+    "defMult": 1.35,
+    "passive": "fortress",
+    "desc": "Pedra viva e endurecida. Virtualmente indestrutivel em defesa."
+  },
+  "Aquilis": {
+    "name": "Tidalon",
+    "hpMult": 1.2,
+    "atkMult": 1.28,
+    "defMult": 1.18,
+    "passive": "torrent",
+    "desc": "Controlador das mares. Cada ataque carrega a forca do oceano."
+  },
+  "Umbrath": {
+    "name": "Vexshade",
+    "hpMult": 1.18,
+    "atkMult": 1.35,
+    "defMult": 1.12,
+    "passive": "shadow_step",
+    "desc": "Sombra materializada. Escapa de golpes e contra-ataca das trevas."
+  },
+  "Solael": {
+    "name": "Auralith",
+    "hpMult": 1.25,
+    "atkMult": 1.22,
+    "defMult": 1.2,
+    "passive": "radiance",
+    "desc": "Pureza da luz condensada. Cura aliados ao vencer batalhas."
+  },
+  "Ferox": {
+    "name": "Thornlord",
+    "hpMult": 1.28,
+    "atkMult": 1.2,
+    "defMult": 1.22,
+    "passive": "thorns",
+    "desc": "Espinhos que perfuram qualquer defesa. Reflete parte do dano recebido."
+  },
+  "Vexaris": {
+    "name": "Hexalisk",
+    "hpMult": 1.15,
+    "atkMult": 1.4,
+    "defMult": 1.1,
+    "passive": "venom",
+    "desc": "Veneno que corroi a alma. Envenenamento causado e mais potente."
+  },
+  "Crestus": {
+    "name": "Pinnacle",
+    "hpMult": 1.32,
+    "atkMult": 1.18,
+    "defMult": 1.28,
+    "passive": "mountain",
+    "desc": "Pico inquebravel. Resistente a status negativos."
+  },
+  "Pyrax": {
+    "name": "Infernus",
+    "hpMult": 1.2,
+    "atkMult": 1.32,
+    "defMult": 1.15,
+    "passive": "inferno",
+    "desc": "Chama eterna que nao se apaga. Queimadura dura mais e causa mais dano."
+  },
+  "Gloamtide": {
+    "name": "Abyssion",
+    "hpMult": 1.18,
+    "atkMult": 1.3,
+    "defMult": 1.2,
+    "passive": "abyss",
+    "desc": "Criatura do abismo profundo. Ganha forca nas trevas."
+  },
+  "Lumivex": {
+    "name": "Solarius",
+    "hpMult": 1.22,
+    "atkMult": 1.25,
+    "defMult": 1.22,
+    "passive": "dawn",
+    "desc": "Aurora viva. Cura HP ao iniciar cada batalha."
+  },
+  "Mosskar": {
+    "name": "Rootwarden",
+    "hpMult": 1.35,
+    "atkMult": 1.12,
+    "defMult": 1.3,
+    "passive": "regrowth",
+    "desc": "Guardiao das raizes. Regenera HP lentamente durante batalhas."
+  },
+  "Venari": {
+    "name": "Toxivore",
+    "hpMult": 1.16,
+    "atkMult": 1.38,
+    "defMult": 1.12,
+    "passive": "predator",
+    "desc": "Predador das sombras. Causa dano adicional em alvos envenenados."
+  },
+  "Leafur": {
+    "name": "Canopex",
+    "hpMult": 1.24,
+    "atkMult": 1.2,
+    "defMult": 1.24,
+    "passive": "canopy",
+    "desc": "Floresta ambulante. Bloqueia o primeiro golpe critico de cada batalha."
+  },
+  "Sparky": {
+    "name": "Volthorn",
+    "hpMult": 1.18,
+    "atkMult": 1.35,
+    "defMult": 1.14,
+    "passive": "static",
+    "desc": "Eletricidade pura. Chance de paralisar ao atacar."
+  },
+  "Voltix": {
+    "name": "Stormking",
+    "hpMult": 1.2,
+    "atkMult": 1.38,
+    "defMult": 1.18,
+    "passive": "thunderlord",
+    "desc": "Rei da tempestade. Dano eletrico amplificado durante tempestades."
+  }
+}

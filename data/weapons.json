@@ -1,0 +1,92 @@
+{
+  "sword": {
+    "icon": "⚔",
+    "name": "Espada",
+    "atk": 12,
+    "range": 1.5,
+    "cd": 800,
+    "el": "physical",
+    "className": "Guardião",
+    "classDesc": "Protetor do grupo",
+    "passives": [
+      {
+        "lvl": 3,
+        "id": "guardian_taunt",
+        "name": "Provocação",
+        "desc": "Recebe 30% dos ataques inimigos destinados às criaturas"
+      },
+      {
+        "lvl": 7,
+        "id": "guardian_block",
+        "name": "Escudo do Herói",
+        "desc": "20% chance de bloquear ataque (0 dano)"
+      },
+      {
+        "lvl": 12,
+        "id": "guardian_rally",
+        "name": "Grito de Guerra",
+        "desc": "Ao atacar, cura 5 HP da criatura ativa"
+      }
+    ]
+  },
+  "staff": {
+    "icon": "🔮",
+    "name": "Cajado Arcano",
+    "atk": 9,
+    "range": 2.2,
+    "cd": 1100,
+    "el": "fire",
+    "className": "Arcano",
+    "classDesc": "Amplificador de magia",
+    "passives": [
+      {
+        "lvl": 3,
+        "id": "arcane_amplify",
+        "name": "Amplificação",
+        "desc": "Ataques elementais de criaturas +15% de dano"
+      },
+      {
+        "lvl": 7,
+        "id": "arcane_channel",
+        "name": "Canalização",
+        "desc": "Ataque do herói tem 25% de chance de causar Queimadura"
+      },
+      {
+        "lvl": 12,
+        "id": "arcane_surge",
+        "name": "Explosão Arcana",
+        "desc": "Quando criatura usa Ult, herói ataca o inimigo imediatamente"
+      }
+    ]
+  },
+  "bow": {
+    "icon": "🏹",
+    "name": "Arco Élfico",
+    "atk": 8,
+    "range": 2.5,
+    "cd": 600,
+    "el": "physical",
+    "className": "Caçador",
+    "classDesc": "Mestre das emboscadas",
+    "passives": [
+      {
+        "lvl": 3,
+        "id": "hunter_firstblood",
+        "name": "Emboscada",
+        "desc": "Primeiro ataque em cada batalha causa +50% dano"
+      },
+      {
+        "lvl": 7,
+        "id": "hunter_swift",
+        "name": "Tiro Veloz",
+        "desc": "Velocidade de ataque do herói +25%"
+      },
+      {
+        "lvl": 12,
+        "id": "hunter_mark",
+        "name": "Marca do Caçador",
+        "desc": "Inimigos marcados recebem +20% de dano de criaturas"
+      }
+    ]
+  }
+}

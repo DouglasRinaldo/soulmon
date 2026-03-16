@@ -1,0 +1,199 @@
+{
+  "VENDOR_STOCK": [
+    {
+      "id": "potion_sm",
+      "icon": "🧪",
+      "name": "Poção Menor",
+      "desc": "Restaura 30% do HP de uma criatura do grupo.",
+      "cost": 90,
+      "type": "consumable"
+    },
+    {
+      "id": "potion_lg",
+      "icon": "⚗",
+      "name": "Poção Maior",
+      "desc": "Restaura 70% do HP de uma criatura do grupo.",
+      "cost": 200,
+      "type": "consumable"
+    },
+    {
+      "id": "orb_better",
+      "icon": "📖",
+      "name": "Grimório Reforçado",
+      "desc": "+20% de chance de vinculacao na proxima batalha.",
+      "cost": 260,
+      "type": "buff"
+    },
+    {
+      "id": "xp_boost",
+      "icon": "★",
+      "name": "Tônico de Crescimento",
+      "desc": "A criatura ativa ganha +50% XP na próxima batalha.",
+      "cost": 220,
+      "type": "buff"
+    },
+    {
+      "id": "souls_map",
+      "icon": "🗺",
+      "name": "Mapa das Almas",
+      "desc": "Revela a localização de todos os santuários nesta área.",
+      "cost": 130,
+      "type": "info"
+    },
+    {
+      "id": "elixir_atk",
+      "icon": "🔺",
+      "name": "Elixir de Força",
+      "desc": "+20% ATQ por 3 turnos em batalha.",
+      "cost": 160,
+      "type": "consumable"
+    },
+    {
+      "id": "elixir_def",
+      "icon": "🔷",
+      "name": "Elixir de Pedra",
+      "desc": "+20% DEF por 3 turnos em batalha.",
+      "cost": 140,
+      "type": "consumable"
+    },
+    {
+      "id": "antidote",
+      "icon": "💚",
+      "name": "Antídoto",
+      "desc": "Remove veneno e queimadura em batalha.",
+      "cost": 80,
+      "type": "consumable"
+    },
+    {
+      "id": "bomb_fire",
+      "icon": "💣",
+      "name": "Bomba de Fogo",
+      "desc": "Causa 20–35 de dano puro ao inimigo em batalha.",
+      "cost": 120,
+      "type": "consumable"
+    },
+    {
+      "id": "hero_potion_sm",
+      "icon": "🫙",
+      "name": "Poção do Caçador",
+      "desc": "Restaura 40% do HP do herói no campo.",
+      "cost": 100,
+      "type": "hero_consumable"
+    },
+    {
+      "id": "hero_potion_lg",
+      "icon": "✦",
+      "name": "Elixir do Caçador",
+      "desc": "Restaura 100% do HP do herói no campo.",
+      "cost": 280,
+      "type": "hero_consumable"
+    },
+    {
+      "id": "hero_shield",
+      "icon": "🛡",
+      "name": "Escama Protetora",
+      "desc": "+4 DEF permanente até o próximo descanso.",
+      "cost": 180,
+      "type": "hero_consumable"
+    },
+    {
+      "id": "hero_rage",
+      "icon": "⚡",
+      "name": "Pó de Fúria",
+      "desc": "+6 ATQ por 5 minutos no campo.",
+      "cost": 160,
+      "type": "hero_consumable"
+    },
+    {
+      "id": "hero_revive",
+      "icon": "💎",
+      "name": "Cristal de Ressurreição",
+      "desc": "Revive o herói com 50% HP ao chegar em 0 (uso único).",
+      "cost": 400,
+      "type": "hero_consumable"
+    }
+  ],
+  "HERO_ITEMS": {
+    "hero_potion_sm": {
+      "icon": "🫙",
+      "name": "Poção do Caçador",
+      "desc": "+40% HP do herói",
+      "type": "heal",
+      "val": 0.4
+    },
+    "hero_potion_lg": {
+      "icon": "✦",
+      "name": "Elixir do Caçador",
+      "desc": "HP do herói cheio",
+      "type": "heal",
+      "val": 1.0
+    },
+    "hero_shield": {
+      "icon": "🛡",
+      "name": "Escama Protetora",
+      "desc": "+4 DEF temporário",
+      "type": "buff_def",
+      "val": 4,
+      "dur": 300000
+    },
+    "hero_rage": {
+      "icon": "⚡",
+      "name": "Pó de Fúria",
+      "desc": "+6 ATQ temporário",
+      "type": "buff_atk",
+      "val": 6,
+      "dur": 300000
+    },
+    "hero_revive": {
+      "icon": "💎",
+      "name": "Cristal de Ressurreição",
+      "desc": "Revive ao cair",
+      "type": "revive",
+      "val": 0.5
+    }
+  },
+  "BATTLE_ITEMS": {
+    "potion_sm": {
+      "icon": "🧪",
+      "name": "Poção Menor",
+      "desc": "+30% HP criatura ativa",
+      "type": "heal",
+      "val": 0.3
+    },
+    "potion_lg": {
+      "icon": "⚗",
+      "name": "Poção Maior",
+      "desc": "+70% HP criatura ativa",
+      "type": "heal",
+      "val": 0.7
+    },
+    "elixir_atk": {
+      "icon": "🔺",
+      "name": "Elixir de Força",
+      "desc": "+20% ATQ por 3 turnos",
+      "type": "buff_atk",
+      "val": 3
+    },
+    "elixir_def": {
+      "icon": "🔷",
+      "name": "Elixir de Pedra",
+      "desc": "+20% DEF por 3 turnos",
+      "type": "buff_def",
+      "val": 3
+    },
+    "antidote": {
+      "icon": "💚",
+      "name": "Antídoto",
+      "desc": "Remove veneno e queimadura",
+      "type": "cleanse",
+      "val": 0
+    },
+    "bomb_fire": {
+      "icon": "💣",
+      "name": "Bomba de Fogo",
+      "desc": "20-35 de dano puro ao inimigo",
+      "type": "damage",
+      "val": 30
+    }
+  }
+}
