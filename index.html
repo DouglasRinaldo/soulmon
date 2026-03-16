@@ -10136,10 +10136,10 @@
       'light+water': 'aurora'
     };
 
-    function getFusionElement(elA, elB) {
-      var key = [elA, elB].sort().join('+');
-      return FUSION_COMBOS[key] || null;
-    }
+    // function getFusionElement(elA, elB) {
+    //   var key = [elA, elB].sort().join('+');
+    //   return FUSION_COMBOS[key] || null;
+    // }
 
     var DROP_RATES = { low: 0.06, mid: 0.11, high: 0.16, extreme: 0.23 };
 
@@ -10148,7 +10148,7 @@
     var REGEN_TEAM = 0.01;
     var REGEN_HALL = 0.06;
 
-    function xpForLevel(lvl) { return Math.floor(40 * Math.pow(lvl, 1.4)); }
+    // function xpForLevel(lvl) { return Math.floor(40 * Math.pow(lvl, 1.4)); }
 
     // ===== QUESTS =====
     // type: 'defeat_any' | 'defeat_el' | 'capture_any' | 'capture_el' | 'win_area'
@@ -13022,77 +13022,77 @@
       }
     }
 
-    function killCreature(c) {
-      // first_revive relic: once per battle, creature survives with 20% HP
-      var _revRelic = typeof getEquippedRelic === 'function' ? getEquippedRelic() : null;
-      if (_revRelic && _revRelic.effect === 'first_revive' && G.battle && !G.battle._relicReviveUsed) {
-        G.battle._relicReviveUsed = true;
-        c.hp = Math.max(1, Math.floor(c.maxHp * 0.20));
-        addLog(c.name + ' [◈ Pedra do Vazio] ressurgiu com ' + c.hp + ' HP!', 'evt');
-        renderBattle();
-        return;
-      }
-      c.hp = 0; c.dead = true;
-      addLog(c.name + ' morreu permanentemente...', 'evt'); renderBattle();
-      // Immediately disable vincular button to prevent post-death capture exploit
-      var capBtn = document.getElementById('capbtn');
-      if (capBtn) { capBtn.disabled = true; capBtn.style.opacity = '0.3'; }
-      var nextInTeam = G.team.find(function (x) { return !x.dead; });
-      if (nextInTeam) {
-        // Still have alive teammates — force swap
-        setTimeout(function () { addLog('Escolha outra criatura.', 'sys'); openSwap(true); }, 900);
-        return;
-      }
-      // No one alive in team — check Hall
-      var hallAlive = G.hall.filter(function (x) { return !x.dead; });
-      if (hallAlive.length > 0) {
-        // Rescued by the Hall
-        G.battle.over = true;
-        setTimeout(function () {
-          moveAllDeadToBook();
-          // Pull up to 3 from Hall into team — arrive at 30% HP (battle-worn)
-          var rescued = [];
-          while (G.team.length < 3 && G.hall.length > 0) {
-            var r = G.hall.shift();
-            r.hp = Math.max(1, Math.floor(r.maxHp * 0.30));
-            rescued.push(r);
-          }
-          rescued.forEach(function (r) { G.team.push(r); });
-          G.activeIdx = 0;
-          killS('my-wrap'); killS('en-wrap');
-          document.getElementById('battle').style.display = 'none';
-          showEscapedByHall(rescued);
-        }, 1600);
-      } else {
-        // No creatures left — trigger Survival Screen if hero has HP
-        G.battle.over = true;
-        setTimeout(function () {
-          moveAllDeadToBook();
-          var hero = G.hero;
-          ensureHero();
-          // Dungeon: on defeat, trigger loss callback instead of game over
-          if (G.battle && G.battle._dungCb) {
-            var _dcb = G.battle._dungCb;
-            G.battle._dungCb = null;
-            document.getElementById('battle').style.display = 'none';
-            try { _dcb(false); } catch (e) { wipeAndGameOver(); }
-            return;
-          }
-          if (hero && hero.hp > 0 && typeof openSurvivalScreen === 'function') {
-            // Pass the enemy to survival screen
-            var enemy = G.battle ? G.battle.enemy : null;
-            document.getElementById('battle').style.display = 'none';
-            if (enemy) {
-              openSurvivalScreen(enemy);
-            } else {
-              wipeAndGameOver();
-            }
-          } else {
-            wipeAndGameOver();
-          }
-        }, 1600);
-      }
-    }
+    // function killCreature(c) {
+    //   // first_revive relic: once per battle, creature survives with 20% HP
+    //   var _revRelic = typeof getEquippedRelic === 'function' ? getEquippedRelic() : null;
+    //   if (_revRelic && _revRelic.effect === 'first_revive' && G.battle && !G.battle._relicReviveUsed) {
+    //     G.battle._relicReviveUsed = true;
+    //     c.hp = Math.max(1, Math.floor(c.maxHp * 0.20));
+    //     addLog(c.name + ' [◈ Pedra do Vazio] ressurgiu com ' + c.hp + ' HP!', 'evt');
+    //     renderBattle();
+    //     return;
+    //   }
+    //   c.hp = 0; c.dead = true;
+    //   addLog(c.name + ' morreu permanentemente...', 'evt'); renderBattle();
+    //   // Immediately disable vincular button to prevent post-death capture exploit
+    //   var capBtn = document.getElementById('capbtn');
+    //   if (capBtn) { capBtn.disabled = true; capBtn.style.opacity = '0.3'; }
+    //   var nextInTeam = G.team.find(function (x) { return !x.dead; });
+    //   if (nextInTeam) {
+    //     // Still have alive teammates — force swap
+    //     setTimeout(function () { addLog('Escolha outra criatura.', 'sys'); openSwap(true); }, 900);
+    //     return;
+    //   }
+    //   // No one alive in team — check Hall
+    //   var hallAlive = G.hall.filter(function (x) { return !x.dead; });
+    //   if (hallAlive.length > 0) {
+    //     // Rescued by the Hall
+    //     G.battle.over = true;
+    //     setTimeout(function () {
+    //       moveAllDeadToBook();
+    //       // Pull up to 3 from Hall into team — arrive at 30% HP (battle-worn)
+    //       var rescued = [];
+    //       while (G.team.length < 3 && G.hall.length > 0) {
+    //         var r = G.hall.shift();
+    //         r.hp = Math.max(1, Math.floor(r.maxHp * 0.30));
+    //         rescued.push(r);
+    //       }
+    //       rescued.forEach(function (r) { G.team.push(r); });
+    //       G.activeIdx = 0;
+    //       killS('my-wrap'); killS('en-wrap');
+    //       document.getElementById('battle').style.display = 'none';
+    //       showEscapedByHall(rescued);
+    //     }, 1600);
+    //   } else {
+    //     // No creatures left — trigger Survival Screen if hero has HP
+    //     G.battle.over = true;
+    //     setTimeout(function () {
+    //       moveAllDeadToBook();
+    //       var hero = G.hero;
+    //       ensureHero();
+    //       // Dungeon: on defeat, trigger loss callback instead of game over
+    //       if (G.battle && G.battle._dungCb) {
+    //         var _dcb = G.battle._dungCb;
+    //         G.battle._dungCb = null;
+    //         document.getElementById('battle').style.display = 'none';
+    //         try { _dcb(false); } catch (e) { wipeAndGameOver(); }
+    //         return;
+    //       }
+    //       if (hero && hero.hp > 0 && typeof openSurvivalScreen === 'function') {
+    //         // Pass the enemy to survival screen
+    //         var enemy = G.battle ? G.battle.enemy : null;
+    //         document.getElementById('battle').style.display = 'none';
+    //         if (enemy) {
+    //           openSurvivalScreen(enemy);
+    //         } else {
+    //           wipeAndGameOver();
+    //         }
+    //       } else {
+    //         wipeAndGameOver();
+    //       }
+    //     }, 1600);
+    //   }
+    // }
 
   </script>
   <script>
@@ -13102,90 +13102,90 @@
     var HAND = { m1: 3, m2: 3, ultUsed: false };
 
     // ===== CREATURES =====
-    function mkC(tpl, lvl) {
-      var sc = 1 + (lvl - 1) * 0.15;
-      var mhp = Math.floor((20 + lvl * 8) * (1 + (tpl.def - 10) * 0.03));
-      // Pre-populate learnedCards for creatures created at high levels
-      var learned = [];
-      if (tpl.learns) {
-        tpl.learns.forEach(function (l) { if (lvl >= l.lvl) learned.push(l.card); });
-      }
-      return {
-        id: Math.random().toString(36).slice(2, 9),
-        name: tpl.name, tplName: tpl.name, el: tpl.el, level: lvl, shape: tpl.shape, body: tpl.body || null,
-        maxHp: mhp, hp: mhp,
-        atk: Math.floor(tpl.atk * sc), def: Math.floor(tpl.def * sc),
-        dead: false, evolved: false,
-        xp: 0, xpNext: xpForLevel(lvl),
-        ultCD: 0,
-        learnedCards: learned
-      };
-    }
+    // function mkC(tpl, lvl) {
+    //   var sc = 1 + (lvl - 1) * 0.15;
+    //   var mhp = Math.floor((20 + lvl * 8) * (1 + (tpl.def - 10) * 0.03));
+    //   // Pre-populate learnedCards for creatures created at high levels
+    //   var learned = [];
+    //   if (tpl.learns) {
+    //     tpl.learns.forEach(function (l) { if (lvl >= l.lvl) learned.push(l.card); });
+    //   }
+    //   return {
+    //     id: Math.random().toString(36).slice(2, 9),
+    //     name: tpl.name, tplName: tpl.name, el: tpl.el, level: lvl, shape: tpl.shape, body: tpl.body || null,
+    //     maxHp: mhp, hp: mhp,
+    //     atk: Math.floor(tpl.atk * sc), def: Math.floor(tpl.def * sc),
+    //     dead: false, evolved: false,
+    //     xp: 0, xpNext: xpForLevel(lvl),
+    //     ultCD: 0,
+    //     learnedCards: learned
+    //   };
+    // }
 
-    function mkEnemy(area) {
-      var lvl = area.minL + Math.floor(Math.random() * (area.maxL - area.minL + 1));
-      var el = area.elems[Math.floor(Math.random() * area.elems.length)];
-      var pool = TPLS.filter(function (t) { return t.el === el; });
-      return mkC(pool[Math.floor(Math.random() * pool.length)], lvl);
-    }
+    // function mkEnemy(area) {
+    //   var lvl = area.minL + Math.floor(Math.random() * (area.maxL - area.minL + 1));
+    //   var el = area.elems[Math.floor(Math.random() * area.elems.length)];
+    //   var pool = TPLS.filter(function (t) { return t.el === el; });
+    //   return mkC(pool[Math.floor(Math.random() * pool.length)], lvl);
+    // }
 
-    function hpCol(p) {
-      if (p > 0.5) return '#27ae60';
-      if (p > 0.25) return '#f39c12';
-      if (p > 0.1) return '#e74c3c';
-      return '#8b0000';
-    }
+    // function hpCol(p) {
+    //   if (p > 0.5) return '#27ae60';
+    //   if (p > 0.25) return '#f39c12';
+    //   if (p > 0.1) return '#e74c3c';
+    //   return '#8b0000';
+    // }
 
-    function ac() { return G.team[G.activeIdx]; }
+    //function ac() { return G.team[G.activeIdx]; }
 
     // ===== XP & LEVEL UP =====
-    function grantXP(creature, amount) {
-      if (creature.dead) return;
-      creature.xp += amount;
-      var leveled = false;
-      while (creature.xp >= creature.xpNext) {
-        creature.xp -= creature.xpNext;
-        levelUp(creature);
-        leveled = true;
-      }
-      if (leveled) {
-        // Check if eligible for evolution (after battle closes, with slight delay)
-        setTimeout(function () { try { checkEvolution(creature); } catch (e) { } }, 1200);
-      }
-      return leveled;
-    }
+    // function grantXP(creature, amount) {
+    //   if (creature.dead) return;
+    //   creature.xp += amount;
+    //   var leveled = false;
+    //   while (creature.xp >= creature.xpNext) {
+    //     creature.xp -= creature.xpNext;
+    //     levelUp(creature);
+    //     leveled = true;
+    //   }
+    //   if (leveled) {
+    //     // Check if eligible for evolution (after battle closes, with slight delay)
+    //     setTimeout(function () { try { checkEvolution(creature); } catch (e) { } }, 1200);
+    //   }
+    //   return leveled;
+    // }
 
-    function levelUp(creature) {
-      var oldAtk = creature.atk, oldDef = creature.def, oldHp = creature.maxHp;
-      creature.level++;
-      var sc = 1 + (creature.level - 1) * 0.15;
-      var tpl = TPLS.find(function (t) { return t.name === (creature.tplName || creature.name); }) || TPLS[0];
-      creature.atk = Math.floor(tpl.atk * sc);
-      creature.def = Math.floor(tpl.def * sc);
-      var newMhp = Math.floor((20 + creature.level * 8) * (1 + (tpl.def - 10) * 0.03));
-      var hpGain = newMhp - oldHp;
-      creature.maxHp = newMhp;
-      creature.hp = Math.min(creature.maxHp, creature.hp + hpGain);
-      creature.xpNext = xpForLevel(creature.level);
-      sfx('level_up');
-      showLevelUpAnim(creature, { atk: creature.atk - oldAtk, def: creature.def - oldDef, hp: hpGain });
-      // Check for newly learned cards
-      checkLearnedCards(creature, tpl);
-    }
+    // function levelUp(creature) {
+    //   var oldAtk = creature.atk, oldDef = creature.def, oldHp = creature.maxHp;
+    //   creature.level++;
+    //   var sc = 1 + (creature.level - 1) * 0.15;
+    //   var tpl = TPLS.find(function (t) { return t.name === (creature.tplName || creature.name); }) || TPLS[0];
+    //   creature.atk = Math.floor(tpl.atk * sc);
+    //   creature.def = Math.floor(tpl.def * sc);
+    //   var newMhp = Math.floor((20 + creature.level * 8) * (1 + (tpl.def - 10) * 0.03));
+    //   var hpGain = newMhp - oldHp;
+    //   creature.maxHp = newMhp;
+    //   creature.hp = Math.min(creature.maxHp, creature.hp + hpGain);
+    //   creature.xpNext = xpForLevel(creature.level);
+    //   sfx('level_up');
+    //   showLevelUpAnim(creature, { atk: creature.atk - oldAtk, def: creature.def - oldDef, hp: hpGain });
+    //   // Check for newly learned cards
+    //   checkLearnedCards(creature, tpl);
+    // }
 
-    function checkLearnedCards(creature, tpl) {
-      if (!tpl || !tpl.learns) return;
-      if (!creature.learnedCards) creature.learnedCards = [];
-      tpl.learns.forEach(function (learn) {
-        if (creature.level >= learn.lvl && creature.learnedCards.indexOf(learn.card) < 0) {
-          creature.learnedCards.push(learn.card);
-          // Show learn notification
-          var msg = '✦ ' + (creature.tplName || creature.name) + ' aprendeu ' + learn.name + '!';
-          addLog(msg, 'evt');
-          showLearnCardAnim(creature, learn);
-        }
-      });
-    }
+    // function checkLearnedCards(creature, tpl) {
+    //   if (!tpl || !tpl.learns) return;
+    //   if (!creature.learnedCards) creature.learnedCards = [];
+    //   tpl.learns.forEach(function (learn) {
+    //     if (creature.level >= learn.lvl && creature.learnedCards.indexOf(learn.card) < 0) {
+    //       creature.learnedCards.push(learn.card);
+    //       // Show learn notification
+    //       var msg = '✦ ' + (creature.tplName || creature.name) + ' aprendeu ' + learn.name + '!';
+    //       addLog(msg, 'evt');
+    //       showLearnCardAnim(creature, learn);
+    //     }
+    //   });
+    // }
 
     function showLearnCardAnim(creature, learn) {
       var el = EL[creature.el];
@@ -15871,16 +15871,16 @@
 
     var _evoTarget = null; // creature pending evolution
 
-    function checkEvolution(creature) {
-      if (!creature || creature.dead) return;
-      if (creature.evolved) return; // already evolved
-      if (!EVO_TABLE || !EVO_TABLE[creature.tplName]) return;
-      if (creature.level < EVO_LEVEL) return;
-      // Don't re-prompt if already shown this session
-      if (creature._evoPending) return;
-      creature._evoPending = true;
-      showEvoPrompt(creature);
-    }
+    // function checkEvolution(creature) {
+    //   if (!creature || creature.dead) return;
+    //   if (creature.evolved) return; // already evolved
+    //   if (!EVO_TABLE || !EVO_TABLE[creature.tplName]) return;
+    //   if (creature.level < EVO_LEVEL) return;
+    //   // Don't re-prompt if already shown this session
+    //   if (creature._evoPending) return;
+    //   creature._evoPending = true;
+    //   showEvoPrompt(creature);
+    // }
 
     function showEvoPrompt(creature) {
       var evo = EVO_TABLE[creature.tplName];
@@ -23366,7 +23366,7 @@
   <script src="./src/events.js"></script>
   <script src="./src/state.js"></script>
   <script src="./data-loader.js"></script>
-
+  <script src="./src/creatures.js"></script>
   <!-- DATA LOADER -->
   <script src="./data-loader.js"></script>
 
