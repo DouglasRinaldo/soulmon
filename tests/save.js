@@ -30,12 +30,12 @@ function getSaveList() {
 
 function updateSaveList(pname, dataSummary) {
   var list = getSaveList();
-  var idx = list.findIndex(function (s) { return s.name === pname; });
+  var idx  = list.findIndex(function (s) { return s.name === pname; });
   var entry = {
-    name: pname,
+    name:  pname,
     souls: dataSummary.souls,
     alive: dataSummary.alive,
-    time: Date.now()
+    time:  Date.now()
   };
   if (idx >= 0) list[idx] = entry;
   else list.push(entry);
@@ -56,28 +56,28 @@ function buildSaveData() {
   G.team = G.team.filter(function (x) { return x !== null; });
 
   return {
-    playerName: G.playerName,
-    souls: G.souls,
-    team: G.team,
-    hall: G.hall,
-    dead: G.dead,
-    items: G.items,
-    activeIdx: G.activeIdx,
-    areaWins: G.areaWins,
-    bestiary: G.bestiary || {},
-    discoveredSpecials: G.discoveredSpecials || {},
-    relicInventory: G.relicInventory || [],
-    equippedRelic: G.equippedRelic || null,
-    viveiro: G.viveiro || [],
-    quests: G.quests || {},
-    buffs: G.buffs || {},
-    bossDefeated: G.bossDefeated || [false, false, false, false, false, false],
-    areaKills: G.areaKills || [0, 0, 0, 0, 0, 0],
-    areaItems: G.areaItems || [0, 0, 0, 0, 0, 0],
-    hero: G.hero || null,
-    plane: G.plane || 0,
-    planePos: G.planePos || {},
-    planeBossDefeated: G.planeBossDefeated || [false, false, false]
+    playerName:         G.playerName,
+    souls:              G.souls,
+    team:               G.team,
+    hall:               G.hall,
+    dead:               G.dead,
+    items:              G.items,
+    activeIdx:          G.activeIdx,
+    areaWins:           G.areaWins,
+    bestiary:           G.bestiary           || {},
+    discoveredSpecials: G.discoveredSpecials  || {},
+    relicInventory:     G.relicInventory      || [],
+    equippedRelic:      G.equippedRelic       || null,
+    viveiro:            G.viveiro             || [],
+    quests:             G.quests              || {},
+    buffs:              G.buffs               || {},
+    bossDefeated:       G.bossDefeated        || [false, false, false, false, false, false],
+    areaKills:          G.areaKills           || [0, 0, 0, 0, 0, 0],
+    areaItems:          G.areaItems           || [0, 0, 0, 0, 0, 0],
+    hero:               G.hero               || null,
+    plane:              G.plane              || 0,
+    planePos:           G.planePos           || {},
+    planeBossDefeated:  G.planeBossDefeated  || [false, false, false]
   };
 }
 
@@ -89,7 +89,7 @@ function saveGame() {
   try {
     if (!G.playerName) return;
 
-    var data = buildSaveData();
+    var data  = buildSaveData();
     var alive = G.team.filter(function (c) { return !c.dead; }).length;
 
     // Save local
