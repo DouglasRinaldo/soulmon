@@ -1,0 +1,69 @@
+{
+  "name": "crystal-element",
+  "version": "1.0.0",
+  "description": "Elemento Cristal — reflete dano e cria escudos",
+
+  "element": {
+    "id": "crystal",
+    "name": "CRISTAL",
+    "hex": "#aaddff",
+    "col": 11394815,
+    "strong": "electric",
+    "weak": "earth"
+  },
+
+  "creatures": [
+    {
+      "name": "Shardling",
+      "el": "crystal",
+      "atk": 10,
+      "def": 16,
+      "shape": "quad",
+      "body": null,
+      "passives": [
+        { "lvl": 5,  "id": "crystal_shield",  "name": "Escudo Cristalino", "desc": "Ganha escudo no início de cada batalha" },
+        { "lvl": 10, "id": "crystal_reflect", "name": "Reflexo Prisma",    "desc": "30% de chance de refletir dano" }
+      ],
+      "learns": [
+        { "lvl": 4, "card": "m2", "name": "Lança de Cristal" }
+      ]
+    },
+    {
+      "name": "Prismara",
+      "el": "crystal",
+      "atk": 13,
+      "def": 13,
+      "shape": "round",
+      "body": null,
+      "passives": [
+        { "lvl": 6,  "id": "crystal_reflect", "name": "Reflexo Prisma",   "desc": "30% de chance de refletir dano" },
+        { "lvl": 12, "id": "crystal_burst",   "name": "Explosão Cristal", "desc": "Ao atingir 0 HP, causa dano em área" }
+      ],
+      "learns": []
+    }
+  ],
+
+  "cards": {
+    "crystal": {
+      "b":  { "n": "Fragmento", "d": "Ataque básico de cristal", "m": 1.0, "p": "M12 2L15 8h6l-5 3.5 2 6.5L12 14l-4.5 4 2-6.5L5 8h6z" },
+      "m1": { "n": "Lança de Cristal", "d": "Dispara estilhaços cortantes", "m": 1.6, "p": "M12 2L15 8h6l-5 3.5 2 6.5L12 14l-4.5 4 2-6.5L5 8h6z", "status": "shield" },
+      "m2": { "n": "Prisma", "d": "Refrata energia — escudo e dano", "m": 1.4, "p": "M12 2L15 8h6l-5 3.5 2 6.5L12 14l-4.5 4 2-6.5L5 8h6z", "status": "reflect" },
+      "u":  { "n": "Colapso Cristalino", "d": "Implode o cristal — dano massivo", "m": 3.2, "p": "M12 2L15 8h6l-5 3.5 2 6.5L12 14l-4.5 4 2-6.5L5 8h6z", "status": "shield_pierce" }
+    }
+  },
+
+  "cardPools": {
+    "crystal": ["b", "m1", "m2"]
+  },
+
+  "evolutions": {
+    "Shardling": {
+      "name": "Crystallith",
+      "hpMult": 1.28,
+      "atkMult": 1.18,
+      "defMult": 1.32,
+      "passive": "crystal_reflect",
+      "desc": "Cristal ancestral. Quase impenetrável em defesa."
+    }
+  }
+}
