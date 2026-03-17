@@ -172,10 +172,10 @@
   {
     "name": "Raposinha",
     "el": "fire",
-    "body": "lizard",
+    "body": "fox",
     "atk": 10,
     "def": 12,
-    "shape": "spiky",
+    "shape": "round",
     "passives": [
       {
         "lvl": 5,

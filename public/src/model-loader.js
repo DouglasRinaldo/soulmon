@@ -173,6 +173,22 @@ var ModelLoader = (function () {
       mesh.position.y = (tpl.modelYOffset || 0) - 0.5;
       mesh.rotation.y = tpl.modelRotationY || 0;
       mesh.position.x = tpl.modelOffsetX || 0;
+
+      // ── Animação idle procedural ──
+      var _t = 0;
+      var _baseY = mesh.position.y;
+      function _idleAnim() {
+        _t += 0.02;
+        // Balanço suave para os lados
+        mesh.rotation.y = (tpl.modelRotationY || 0) + Math.sin(_t * 0.6) * 0.08;
+        // Bob vertical suave
+        mesh.position.y = _baseY + Math.sin(_t) * 0.03;
+        mesh.userData._idleRaf = requestAnimationFrame(_idleAnim);
+      }
+      _idleAnim();
+      // ── Fim animação idle ──
+
+
       if (onReady) onReady(mesh);
     });
   }
